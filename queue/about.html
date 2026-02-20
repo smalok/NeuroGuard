@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard | About &amp; Science</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neural-bg {
+            background: radial-gradient(circle at 50% 50%, #1a2a4a 0%, #101622 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .neural-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#2b6cee 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.15;
+        }
+        .flow-line {
+            height: 2px;
+            background: linear-gradient(90deg, #2b6cee 0%, #a855f7 100%);
+            position: relative;
+        }
+        .flow-line::after {
+            content: '➔';
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            color: #a855f7;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-white/10 glass-card">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white">psychology</span>
+</div>
+<span class="text-xl font-bold tracking-tight">NEURO<span class="text-primary">GUARD</span></span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-1" href="#">About &amp; Science</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Documentation</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-blue-600 hover:opacity-90 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
+                Get Started
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="neural-bg py-24 md:py-32 relative">
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">About NeuroGuard</h1>
+<p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Building the future of burnout prevention through high-fidelity physiological monitoring and machine learning.
+            </p>
+</div>
+</header>
+<!-- Section 1: Mission -->
+<section class="py-20 max-w-7xl mx-auto px-6">
+<div class="glass-card rounded-xl p-8 md:p-12 border-l-8 border-l-primary relative overflow-hidden group">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<div class="max-w-3xl relative z-10">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Our Mission</span>
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Empowering mental health through physiological precision.</h2>
+<p class="text-lg text-slate-400 leading-relaxed">
+                    NeuroGuard was born from the intersection of neuroscience and software engineering. Our mission is to transform subjective mental fatigue into objective data, allowing individuals and organizations to preemptively address burnout before it manifests as physical illness.
+                </p>
+</div>
+</div>
+</section>
+<!-- Section 2: The Science -->
+<section class="py-20 bg-black/20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h2 class="text-3xl font-bold mb-2">The Science of Detection</h2>
+<p class="text-slate-400">Multi-modal biometric analysis for a holistic stress profile.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- ECG Features -->
+<div class="glass-card rounded-xl p-8 border-t-4 border-t-primary">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-primary">favorite</span>
+</div>
+<h3 class="text-2xl font-bold">ECG Analysis</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">Heart Rate Variability (HRV)</h4>
+<p class="text-sm text-slate-400">The primary indicator of autonomic nervous system balance.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">RMSSD &amp; SDNN</h4>
+<p class="text-sm text-slate-400">Temporal metrics for short-term and long-term heart rhythm stability.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">R-Peak Detection</h4>
+<p class="text-sm text-slate-400">High-precision peak detection for millisecond-level interval analysis.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- EMG Features -->
+<div class="glass-card rounded-xl p-8 border-t-4 border-t-purple-500">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+<span class="material-icons text-purple-500">fitness_center</span>
+</div>
+<h3 class="text-2xl font-bold">EMG Analysis</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-icons text-purple-500 text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">Root Mean Square (RMS)</h4>
+<p class="text-sm text-slate-400">Measurement of overall muscle activation and physical tension.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-purple-500 text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">Median Frequency</h4>
+<p class="text-sm text-slate-400">Spectral analysis to detect early onset of muscular fatigue.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-purple-500 text-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-bold text-sm uppercase text-slate-300">Micro-Tension Delta</h4>
+<p class="text-sm text-slate-400">Tracking sub-perceptual muscle contractions linked to chronic stress.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: ML Model Pipeline -->
+<section class="py-20 max-w-7xl mx-auto px-6">
+<div class="mb-16 text-center">
+<h2 class="text-3xl font-bold">ML Model Pipeline</h2>
+<p class="text-slate-400">How raw signals translate into clinical insights</p>
+</div>
+<div class="hidden lg:flex items-center justify-between gap-4 mb-20 px-10">
+<div class="glass-card p-4 rounded text-center w-40">
+<span class="text-xs font-bold text-primary">RAW DATA</span>
+<p class="text-xs">ECG/EMG Input</p>
+</div>
+<div class="flow-line flex-1"></div>
+<div class="glass-card p-4 rounded text-center w-40">
+<span class="text-xs font-bold text-primary">PRE-PROCESS</span>
+<p class="text-xs">Filter &amp; Normalize</p>
+</div>
+<div class="flow-line flex-1"></div>
+<div class="bg-primary p-6 rounded-lg text-center w-52 shadow-xl shadow-primary/20">
+<span class="text-xs font-bold text-white uppercase tracking-widest">Random Forest</span>
+<p class="text-sm text-white/80">Classification Model</p>
+</div>
+<div class="flow-line flex-1"></div>
+<div class="flex flex-col gap-2">
+<div class="px-4 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-bold border border-emerald-500/30">NORMAL</div>
+<div class="px-4 py-1 bg-amber-500/20 text-amber-400 rounded-full text-[10px] font-bold border border-amber-500/30">STRESS</div>
+<div class="px-4 py-1 bg-rose-500/20 text-rose-400 rounded-full text-[10px] font-bold border border-rose-500/30">BURNOUT</div>
+</div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-card p-6 rounded-lg">
+<h4 class="font-bold text-sm mb-2 text-primary">Interpretability</h4>
+<p class="text-xs text-slate-400">Feature importance mapping allows us to explain why a specific risk was flagged.</p>
+</div>
+<div class="glass-card p-6 rounded-lg">
+<h4 class="font-bold text-sm mb-2 text-primary">Robustness</h4>
+<p class="text-xs text-slate-400">Resistant to overfitting through ensemble learning across multiple decision trees.</p>
+</div>
+<div class="glass-card p-6 rounded-lg">
+<h4 class="font-bold text-sm mb-2 text-primary">Non-Linearity</h4>
+<p class="text-xs text-slate-400">Captures complex relationships between heart rate and muscle tension patterns.</p>
+</div>
+<div class="glass-card p-6 rounded-lg">
+<h4 class="font-bold text-sm mb-2 text-primary">Low Latency</h4>
+<p class="text-xs text-slate-400">Optimized for real-time edge computing on low-power hardware devices.</p>
+</div>
+</div>
+</section>
+<!-- Section 4: Hardware Stack -->
+<section class="py-20 bg-black/20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-12">
+<h2 class="text-3xl font-bold">Hardware Architecture</h2>
+<p class="text-slate-400">Medical-grade precision at a hobbyist scale.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<!-- Arduino -->
+<div class="bg-background-dark border border-white/5 rounded-xl overflow-hidden group">
+<div class="h-48 bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Microcontroller circuit board close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2cgRLQ_wYoBHMQTNAg4OdopAwao1j-V7D_pdu5vhDjGf9ierwd6rBYq46MAm-5HezQhi_6WeBB78mXawrh77Av_A2KbkWVBZvBM44iPdlrAtYfPirJEuYkvd9ctdFbp9TMOnyrBxE4AhuHndLjzQtjbJEW-itfyZs82qEoRQmdQKN-REP8d-BOKUWAh7egVtWA3NM2RB4m5cr2kSUnhOKnl4USrOcSpFvjV9QFOpW4MW10zuC25Ra4UixZvUhxmrMmuXTVeoUUYQ9"/>
+</div>
+<div class="p-6">
+<h3 class="font-bold text-xl mb-4">Arduino Control</h3>
+<ul class="space-y-2 text-sm text-slate-400">
+<li>• High-speed ADC sampling</li>
+<li>• Serial data stream processing</li>
+<li>• 12-bit analog resolution</li>
+<li>• Low-latency HID communication</li>
+</ul>
+</div>
+</div>
+<!-- BioAmp -->
+<div class="bg-background-dark border border-white/5 rounded-xl overflow-hidden group">
+<div class="h-48 bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Medical sensor and electrode connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfQQxtSI_9pUhk0_Bmhu86t7Y1pYuCUV_ilncPT3cpXW15Z1gKN3LEF9lr_GlXMTV29n_Etmu-b1_MUce-7jY0sBrCnDNyrYw12Zlmn_NVonI2HkVjnde4GG7_O7N2bh6awSTWiy3RHF1Zaaee8nzyWNokXqGE37JO0ORXfOAZ3Dc1u8Z1sZHoG1KbNO4X8M0wp5Vh9scDtdqvkqhAYMv7wff598L7_eQYJfh0PWmQbzOdJY5idCjYo_JfJ7_uM0QtX_0uS8Buz-f_"/>
+</div>
+<div class="p-6">
+<h3 class="font-bold text-xl mb-4">BioAmp EXG Pill</h3>
+<ul class="space-y-2 text-sm text-slate-400">
+<li>• Analog front-end for EXG</li>
+<li>• Signal amplification (G=100)</li>
+<li>• Bandpass filtering (0.5Hz - 440Hz)</li>
+<li>• Compact wearable form-factor</li>
+</ul>
+</div>
+</div>
+<!-- Electrodes -->
+<div class="bg-background-dark border border-white/5 rounded-xl overflow-hidden group">
+<div class="h-48 bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Silver medical electrodes macro view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUTRuh1RoGkJBRjdnXQKsvGIUMBVX2VOU6ZCcsXsAd--j_ICHVcLIbu6NNhQL4meCuEmmDfC1FOtxjb7JM7h2iLIzpVAYvGc65wIJ82DDsKvlF6s9SQlJhAhjzv-lyhWr5YwAUuoXqJdkLmuXN5w9L9e3Aq2q3UP7W0JhWa1fEOFAcVBRPTAoBsJUKjFhtkHydBNvWU85OaXjeTdIcDSjPdY_syEgK1uZCsKT6aqBzhdGJsgNHPgW3BQu8oKdHQQebiCR9TEyacZvs"/>
+</div>
+<div class="p-6">
+<h3 class="font-bold text-xl mb-4">Ag/AgCl Electrodes</h3>
+<ul class="space-y-2 text-sm text-slate-400">
+<li>• Silver-Silver Chloride sensors</li>
+<li>• Low contact impedance</li>
+<li>• Pre-gelled skin interface</li>
+<li>• Minimal motion artifact</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Tech Stack -->
+<section class="py-20 max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-3xl font-bold mb-12">The Tech Stack</h2>
+<div class="flex flex-wrap justify-center gap-4">
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">Next.js 14</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">FastAPI</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">Scikit-Learn</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">PostgreSQL</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">Tailwind CSS</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">Python Core</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">C++ (Embedded)</span>
+<span class="px-6 py-3 bg-white/5 rounded-full border border-white/10 text-sm font-medium hover:border-primary transition-colors cursor-default">D3.js Visualization</span>
+</div>
+</section>
+<!-- Section 6: Team -->
+<section class="py-20 max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold">The Minds Behind NeuroGuard</h2>
+<p class="text-slate-400">A multidisciplinary team of engineers and researchers.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="text-center group">
+<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary group-hover:scale-105 transition-transform">
+<img class="w-full h-full object-cover" data-alt="Portrait of lead researcher" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsFOKWAgixq6rmscd56MnhYg-jbUY-eZ-vBU4YXrPtHGZRzpoyJ5WrKjlNaRKv5CK-t00GX7ZgxEgndCO5TGtPZPD7QYbtpvb0da1Te-9IjShCBI9Fcx4lzYt3GjNdPGUBIo5lILgzYJSuwbA8ZuIxVY7w6t8ynievFJ_y9Brmc3Jd5nxM4TmpzU-ZMpktP3MfqH-ImeuuOXROlLrl7_V93e4ulzustG9yYVWEoZ6tHtJlTAN0R-SybziRZJ6GfiQId12vFvtM5yAW"/>
+</div>
+<h4 class="text-xl font-bold">Dr. Elias Vance</h4>
+<p class="text-primary text-sm mb-4 uppercase tracking-wider">Lead Researcher</p>
+<p class="text-slate-400 text-sm px-4">Expert in neuro-physiology with 12 years of experience in stress research.</p>
+</div>
+<div class="text-center group">
+<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary group-hover:scale-105 transition-transform">
+<img class="w-full h-full object-cover" data-alt="Portrait of machine learning engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpETDe_3HE5ulBizeCN-pD3802rGQZRNl-jDafJ8iYNmp5wMvQvPqPQ71AJDSSfCGH2SbDBJw7-yhD1Gnh3MoZT7pzn624wUVe6T0fxkn4oDxyI1dJQM9rViW9nenfYQjPhsm3OUFtk_3BT_-68ILynYfzaniUhPQHyjyu2Y-t98jI8Q0lYuAbnuhUX46aAyCN32qdkITisLO-lJDaInUwaB2-9w50nPW_deSxZuiwamEAh2E5fGFz5SQgURy76K2xEkNB5XCM_BIR"/>
+</div>
+<h4 class="text-xl font-bold">Sarah Chen</h4>
+<p class="text-primary text-sm mb-4 uppercase tracking-wider">ML Architect</p>
+<p class="text-slate-400 text-sm px-4">Focused on signal processing and neural network optimization for edge devices.</p>
+</div>
+<div class="text-center group">
+<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary group-hover:scale-105 transition-transform">
+<img class="w-full h-full object-cover" data-alt="Portrait of frontend developer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTY1E4Z-rMeumK5CwgFufhVlMh9cJi_JIYNqggAK9CiZN-UF-xyqDjkMKCjpxb2GqHcNBH2-meA1TP4xmUASbZjHi24UFjum10-bsGX4PfJS0U9niQK1uEWXPuTB6ux5lkRigNI3WVAqDQJbGTp6gUJELDiTw87VjBzJ1LeJC-R3YiWx2-M2EqTUgkrJQqx_IwTmySgfv0dO9EmzNHS1iWoYG-ZOtFwc--j4JjJh0nS55PJNT29iHJOAQaWt7LzlE8i_QOyvjbc5gS"/>
+</div>
+<h4 class="text-xl font-bold">Marcus Thorne</h4>
+<p class="text-primary text-sm mb-4 uppercase tracking-wider">Frontend Lead</p>
+<p class="text-slate-400 text-sm px-4">Creating seamless interactions between complex biometric data and the user.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-white/10 py-16 bg-black/40">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-sm">psychology</span>
+</div>
+<span class="text-lg font-bold tracking-tight">NEURO<span class="text-primary">GUARD</span></span>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">
+                        Pioneering the next generation of occupational health monitoring using non-invasive physiological sensors.
+                    </p>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Platform</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">How it works</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Docs</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Science</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Methodology</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Clinical Trials</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Whitepapers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Data Privacy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Contact</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Support Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sales</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press Kit</a></li>
+<li class="flex gap-4 pt-2">
+<span class="material-icons text-xl cursor-pointer hover:text-primary">share</span>
+<span class="material-icons text-xl cursor-pointer hover:text-primary">language</span>
+<span class="material-icons text-xl cursor-pointer hover:text-primary">mail</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-600">© 2024 NeuroGuard Technologies. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs text-slate-600 hover:text-slate-400" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-600 hover:text-slate-400" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

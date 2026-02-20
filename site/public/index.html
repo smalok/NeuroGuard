@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard | Clinical AI Burnout Detection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "bg-main": "#0a0e1a",
+                        "card-bg": "#111827",
+                        "neuro-blue": "#3b82f6",
+                        "neuro-purple": "#a855f7",
+                        "neuro-green": "#22c55e",
+                        "neuro-yellow": "#eab308",
+                        "neuro-red": "#ef4444",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "heading": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-bg-main text-slate-100 font-sans antialiased;
+            }
+            h1, h2, h3, h4 {
+                @apply font-heading;
+            }
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            @apply bg-clip-text text-transparent bg-gradient-to-r from-neuro-blue to-neuro-purple;
+        }
+        .data-val {
+            @apply font-mono text-neuro-blue;
+        }
+        .ecg-animate {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-bg-main/80 backdrop-blur-xl">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-neuro-blue absolute text-4xl opacity-50">shield</span>
+<span class="material-symbols-outlined text-neuro-purple relative text-2xl">psychology</span>
+</div>
+<span class="font-heading text-xl font-bold tracking-tight">Neuro<span class="text-neuro-blue">Guard</span></span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+<a class="hover:text-neuro-blue transition-colors" href="#how-it-works">How It Works</a>
+<a class="hover:text-neuro-blue transition-colors" href="#features">Technology</a>
+<a class="hover:text-neuro-blue transition-colors" href="#hardware">Hardware</a>
+<a class="hover:text-neuro-blue transition-colors" href="#ml">AI Logic</a>
+</div>
+<button class="bg-gradient-to-r from-neuro-blue to-neuro-purple text-white px-6 py-2.5 rounded-full font-medium hover:brightness-110 transition-all shadow-lg shadow-neuro-blue/20">
+            Get Started
+        </button>
+</div>
+</nav>
+<section class="relative pt-44 pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
+<path class="ecg-animate" d="M0,200 L100,200 L120,150 L140,250 L160,200 L300,200 L320,50 L340,350 L360,200 L500,200 L520,180 L540,220 L560,200 L800,200 L820,100 L840,300 L860,200 L1000,200" fill="none" stroke="#3b82f6" stroke-width="2"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neuro-blue/10 border border-neuro-blue/20 text-neuro-blue text-xs font-mono mb-8 uppercase tracking-widest">
+<span class="flex h-2 w-2 rounded-full bg-neuro-blue animate-pulse"></span>
+            Real-time Biosignal Analysis Active
+        </div>
+<h1 class="text-5xl md:text-8xl font-bold mb-8 leading-[1.1] tracking-tight">
+            Detect Burnout <br/>
+<span class="gradient-text">Before It Hits.</span>
+</h1>
+<p class="max-w-2xl mx-auto text-lg text-slate-400 mb-12 leading-relaxed">
+            Harnessing high-fidelity ECG and EMG sensors with Random Forest AI to provide clinical-grade early warning systems for mental and physical exhaustion.
+        </p>
+<div class="flex flex-wrap justify-center gap-6 mb-24">
+<button class="px-10 py-4 bg-neuro-blue text-white rounded-xl font-semibold hover:bg-blue-600 transition-all shadow-2xl shadow-neuro-blue/30">
+                Deploy System
+            </button>
+<button class="px-10 py-4 glass text-white rounded-xl font-semibold hover:bg-white/5 transition-all">
+                View Technical Specs
+            </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto py-12 border-y border-white/5">
+<div class="text-center">
+<div class="data-val text-4xl font-bold mb-2">98.4%</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">Detection Accuracy</div>
+</div>
+<div class="text-center">
+<div class="data-val text-4xl font-bold mb-2">250Hz</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">Sampling Rate</div>
+</div>
+<div class="text-center">
+<div class="data-val text-4xl font-bold mb-2">&lt;40ms</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">Edge Latency</div>
+</div>
+<div class="text-center">
+<div class="data-val text-4xl font-bold mb-2">128</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">Feature Vectors</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-bg-main relative">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-20">
+<h2 class="text-4xl font-bold mb-4">The Cost of Latent Burnout</h2>
+<p class="text-slate-400 max-w-xl">Traditional metrics fail to capture the physiological transition from high performance to chronic fatigue.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-12 rounded-2xl bg-card-bg border border-white/5 hover:border-neuro-purple/30 transition-all group">
+<div class="font-mono text-5xl font-bold text-neuro-purple mb-6 group-hover:scale-110 transition-transform origin-left">$322B</div>
+<h3 class="text-xl font-bold mb-4">Market Impact</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Estimated annual loss in global productivity due to unmanaged employee burnout and mental health turnover.</p>
+</div>
+<div class="p-12 rounded-2xl bg-card-bg border border-white/5 hover:border-neuro-blue/30 transition-all group">
+<div class="font-mono text-5xl font-bold text-neuro-blue mb-6 group-hover:scale-110 transition-transform origin-left">76%</div>
+<h3 class="text-xl font-bold mb-4">High-Risk Workforce</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Proportion of technical professionals reporting symptoms of moderate to severe physiological stress daily.</p>
+</div>
+<div class="p-12 rounded-2xl bg-card-bg border border-white/5 hover:border-neuro-red/30 transition-all group">
+<div class="font-mono text-5xl font-bold text-neuro-red mb-6 group-hover:scale-110 transition-transform origin-left">2.5x</div>
+<h3 class="text-xl font-bold mb-4">Error Escalation</h3>
+<p class="text-slate-400 text-sm leading-relaxed">The increase in critical error probability once baseline HRV deviates beyond the 20% stability threshold.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 relative" id="how-it-works">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-24">
+<h2 class="text-4xl font-bold mb-4">Clinical Pipeline</h2>
+<p class="text-slate-400">The journey from biological pulse to proactive intervention.</p>
+</div>
+<div class="relative">
+<div class="hidden lg:block absolute top-12 left-0 w-full h-px bg-gradient-to-r from-neuro-blue via-neuro-purple to-neuro-blue opacity-30"></div>
+<div class="grid lg:grid-cols-4 gap-12 relative z-10">
+<div class="text-center group">
+<div class="w-24 h-24 mx-auto rounded-2xl bg-bg-main border border-neuro-blue flex items-center justify-center mb-8 group-hover:bg-neuro-blue/10 transition-colors">
+<span class="material-symbols-outlined text-neuro-blue text-4xl">sensors</span>
+</div>
+<h4 class="font-bold text-lg mb-3">01. Signal Capture</h4>
+<p class="text-slate-500 text-sm px-4">BioAmp EXG sensors capture raw micro-volt ECG/EMG signals at 250 samples per second.</p>
+</div>
+<div class="text-center group">
+<div class="w-24 h-24 mx-auto rounded-2xl bg-bg-main border border-neuro-purple flex items-center justify-center mb-8 group-hover:bg-neuro-purple/10 transition-colors">
+<span class="material-symbols-outlined text-neuro-purple text-4xl">query_stats</span>
+</div>
+<h4 class="font-bold text-lg mb-3">02. Noise Filtration</h4>
+<p class="text-slate-500 text-sm px-4">Digital notch filters remove 50/60Hz interference and motion artifacts in real-time.</p>
+</div>
+<div class="text-center group">
+<div class="w-24 h-24 mx-auto rounded-2xl bg-bg-main border border-neuro-green flex items-center justify-center mb-8 group-hover:bg-neuro-green/10 transition-colors">
+<span class="material-symbols-outlined text-neuro-green text-4xl">hub</span>
+</div>
+<h4 class="font-bold text-lg mb-3">03. AI Processing</h4>
+<p class="text-slate-500 text-sm px-4">Ensemble Learning models classify signals into Stress, Normal, or Burnout categories.</p>
+</div>
+<div class="text-center group">
+<div class="w-24 h-24 mx-auto rounded-2xl bg-bg-main border border-neuro-yellow flex items-center justify-center mb-8 group-hover:bg-neuro-yellow/10 transition-colors">
+<span class="material-symbols-outlined text-neuro-yellow text-4xl">notifications_active</span>
+</div>
+<h4 class="font-bold text-lg mb-3">04. Intervention</h4>
+<p class="text-slate-500 text-sm px-4">Adaptive protocols trigger breaks or workflow changes before physiological failure.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-bg-main" id="features">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass p-10 rounded-2xl hover:border-neuro-blue/40 transition-all">
+<span class="material-symbols-outlined text-neuro-blue text-4xl mb-6">monitor_heart</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">ECG Monitoring</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Medical-grade Heart Rate Variability (HRV) analysis to assess Autonomic Nervous System balance.</p>
+</div>
+<div class="glass p-10 rounded-2xl hover:border-neuro-purple/40 transition-all">
+<span class="material-symbols-outlined text-neuro-purple text-4xl mb-6">vital_signs</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">EMG Tension</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Electromyography tracking of micro-muscle contractions in the trapezius for physical stress indices.</p>
+</div>
+<div class="glass p-10 rounded-2xl hover:border-neuro-green/40 transition-all">
+<span class="material-symbols-outlined text-neuro-green text-4xl mb-6">speed</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">Stress Gauge</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Visualized real-time index combining sympathetic and parasympathetic activation metrics.</p>
+</div>
+<div class="glass p-10 rounded-2xl hover:border-neuro-yellow/40 transition-all">
+<span class="material-symbols-outlined text-neuro-yellow text-4xl mb-6">trending_up</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">Trend Analysis</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Longitudinal data processing to identify recurring stressors and environmental burnout triggers.</p>
+</div>
+<div class="glass p-10 rounded-2xl hover:border-neuro-red/40 transition-all">
+<span class="material-symbols-outlined text-neuro-red text-4xl mb-6">warning</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">Predictive Alerts</h3>
+<p class="text-slate-400 text-sm leading-relaxed">ML-driven forecasting that detects upcoming burnout risk up to 48 hours in advance.</p>
+</div>
+<div class="glass p-10 rounded-2xl hover:border-neuro-blue/40 transition-all">
+<span class="material-symbols-outlined text-neuro-blue text-4xl mb-6">security</span>
+<h3 class="text-2xl font-bold mb-4 font-heading">Encrypted Vault</h3>
+<p class="text-slate-400 text-sm leading-relaxed">End-to-end AES-256 encryption for all biometric data streams, ensuring total user privacy.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-bold mb-4">System Architecture</h2>
+<p class="text-slate-400">Low-latency data flow from hardware to cloud dashboard.</p>
+</div>
+<div class="bg-card-bg rounded-3xl p-12 border border-white/5">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+<div class="flex-1 text-center">
+<div class="w-20 h-20 bg-neuro-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-neuro-blue text-3xl">developer_board</span>
+</div>
+<div class="font-mono text-xs text-slate-500 mb-2">INPUT LAYER</div>
+<div class="font-bold">Edge Sensors</div>
+</div>
+<span class="material-symbols-outlined text-slate-700 text-4xl rotate-90 lg:rotate-0">arrow_forward</span>
+<div class="flex-1 text-center">
+<div class="w-20 h-20 bg-neuro-purple/20 rounded-2xl flex items-center justify-center mx-auto mb-6 border-2 border-neuro-purple/40">
+<span class="material-symbols-outlined text-neuro-purple text-3xl">memory</span>
+</div>
+<div class="font-mono text-xs text-slate-500 mb-2">COMPUTE LAYER</div>
+<div class="font-bold">RF Engine</div>
+</div>
+<span class="material-symbols-outlined text-slate-700 text-4xl rotate-90 lg:rotate-0">arrow_forward</span>
+<div class="flex-1 text-center">
+<div class="w-20 h-20 bg-neuro-green/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-neuro-green text-3xl">cloud</span>
+</div>
+<div class="font-mono text-xs text-slate-500 mb-2">STORAGE LAYER</div>
+<div class="font-bold">Secure Cloud</div>
+</div>
+<span class="material-symbols-outlined text-slate-700 text-4xl rotate-90 lg:rotate-0">arrow_forward</span>
+<div class="flex-1 text-center">
+<div class="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-white text-3xl">dashboard</span>
+</div>
+<div class="font-mono text-xs text-slate-500 mb-2">OUTPUT LAYER</div>
+<div class="font-bold">Dashboard</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-black/40" id="hardware">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-bold mb-4">Medical-Grade Hardware</h2>
+<p class="text-slate-400 max-w-xl">The precision instruments that make reliable burnout detection possible.</p>
+</div>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-white/5 rounded-lg font-mono text-xs text-neuro-blue border border-white/10">v2.4 LTS Certified</div>
+</div>
+</div>
+<div class="grid md:grid-cols-4 gap-6">
+<div class="bg-card-bg rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all">
+<div class="h-48 bg-slate-800">
+<img alt="Arduino Nano" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ3WKeQ9s6r3uFefNRu0oiK4iSuUuiFiPJR6cNnrYATlCBuFFGRFuvIp2hwxBB6Lu0Ag5ENnag7L0YDRhJi-hiTFsQpXhcZYCUMwqVdFMuy8UjIqTu-f5sz5Xy5R1gXXkvrm3ld-LS3-y4jvGjOFLpGvFH8KfxpVooRgmNunWVAbNw4QZglNRtYzY2u7lqNviDBL1uX_7J8h5PqaT1bdg4zR7aeGnX4BVgdMelIxQNRAfuuLDA3o0PCd72tEKs0f4PX434HdlqCSyo"/>
+</div>
+<div class="p-6">
+<div class="font-mono text-[10px] text-neuro-blue mb-2 uppercase tracking-widest">Processor</div>
+<h4 class="font-bold text-lg mb-2">Arduino Nano RP2040</h4>
+<p class="text-slate-500 text-xs">Dual-core processing for real-time edge FFT analysis.</p>
+</div>
+</div>
+<div class="bg-card-bg rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all">
+<div class="h-48 bg-slate-800">
+<img alt="BioAmp EXG Pill" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCDUxKrQi3IhrbphmRMqlVieUU0eoTb_WsEPSkSmoevMivnKQtYAOBEXDMlUJFT9Oc1oXf7jhzPoqfBBIY2d2y4ErO4ARwzMckdUtracG_VCxfLQ01mSIgmTFJAJN--ykQmGZcCOzILjPGsRuqhWAcJRcm9qe4EsZD1r9Su12-OR1eJ9EIKXTiCE-v0l9mFrPEBKkxpPaRHVevzrCUqlS7yVQ8_yHArXsdhzDxqceNNEdzE9pGc9O3CNEu4A5PXxdXQWJ2qm2rVkfN"/>
+</div>
+<div class="p-6">
+<div class="font-mono text-[10px] text-neuro-purple mb-2 uppercase tracking-widest">Biosensing</div>
+<h4 class="font-bold text-lg mb-2">BioAmp EXG Pill</h4>
+<p class="text-slate-500 text-xs">High-fidelity analog front-end for biopotential signals.</p>
+</div>
+</div>
+<div class="bg-card-bg rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all">
+<div class="h-48 bg-slate-800">
+<img alt="Electrodes" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjfRwsWuJaJLFyNcKruAOAZmDEwO2uxLtDGWHY5ODF-vD38y54a17OygV8iKgJYamUTGWhrpIZz_al-MzxdRJYPloefxsPsbyzNrIgeTDja6Re66-HASrTi7YpOAPM5X0RAC5znRMPbA-HF2W6CaLuAXwvKgHgoVc8fV6pT0mYyIftHVFAd-739YTCP78-Vf0IiaKSgZlpDy8mer2FmegPkNTUowLVIdRR5rxEnYY4Ey6A-vEtYzlC0zJElaw9_b4V_lqYTnX-TifO"/>
+</div>
+<div class="p-6">
+<div class="font-mono text-[10px] text-neuro-green mb-2 uppercase tracking-widest">Interface</div>
+<h4 class="font-bold text-lg mb-2">Gel-Pill Electrodes</h4>
+<p class="text-slate-500 text-xs">Medical-grade Ag/AgCl sensors for minimal skin impedance.</p>
+</div>
+</div>
+<div class="bg-card-bg rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all">
+<div class="h-48 bg-slate-800 flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
+<span class="material-symbols-outlined text-6xl text-white/10">settings_input_component</span>
+</div>
+<div class="p-6">
+<div class="font-mono text-[10px] text-neuro-yellow mb-2 uppercase tracking-widest">Chassis</div>
+<h4 class="font-bold text-lg mb-2">Custom Shield</h4>
+<p class="text-slate-500 text-xs">Ergonomic wearable housing with integrated power management.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32" id="ml">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute inset-0 bg-neuro-purple/10 blur-[120px] rounded-full"></div>
+<div class="relative glass rounded-3xl p-8 space-y-6">
+<div class="flex justify-between items-center pb-4 border-b border-white/5">
+<span class="font-mono text-xs text-slate-500">ML_CLASSIFICATION_OUTPUT</span>
+<span class="px-2 py-1 bg-neuro-green/10 text-neuro-green text-[10px] font-mono rounded">LIVE_FEED</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-neuro-green/10 border border-neuro-green/30 rounded-xl flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-neuro-green shadow-[0_0_8px_#22c55e]"></div>
+<span class="font-mono text-sm">Class: NORMAL_STATE</span>
+</div>
+<span class="font-mono text-xs text-neuro-green">Conf: 0.992</span>
+</div>
+<div class="p-4 bg-neuro-yellow/10 border border-neuro-yellow/30 rounded-xl flex items-center justify-between opacity-60">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-neuro-yellow"></div>
+<span class="font-mono text-sm">Class: ACUTE_STRESS</span>
+</div>
+<span class="font-mono text-xs text-neuro-yellow">Conf: 0.006</span>
+</div>
+<div class="p-4 bg-neuro-red/10 border border-neuro-red/30 rounded-xl flex items-center justify-between opacity-40">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-neuro-red"></div>
+<span class="font-mono text-sm">Class: BURNOUT_RISK</span>
+</div>
+<span class="font-mono text-xs text-neuro-red">Conf: 0.002</span>
+</div>
+</div>
+<div class="pt-4">
+<div class="flex justify-between text-[10px] font-mono text-slate-500 mb-2">
+<span>FEATURE_IMPORTANCE</span>
+<span>ENTROPY_GAIN</span>
+</div>
+<div class="space-y-2">
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-neuro-blue w-[85%]"></div>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-neuro-purple w-[60%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Random Forest <br/>Ensemble Logic</h2>
+<p class="text-slate-400 mb-8 leading-relaxed">
+                    Our proprietary model utilizes a forest of 500+ decision trees to aggregate signals from 128 different biological features. This ensemble approach mitigates individual sensor noise and ensures clinical-level classification accuracy across diverse user demographics.
+                </p>
+<ul class="space-y-4 font-mono text-sm text-slate-300">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neuro-blue text-sm">check_circle</span>
+                        Non-linear signal correlation analysis
+                    </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neuro-blue text-sm">check_circle</span>
+                        Gini impurity reduction optimization
+                    </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neuro-blue text-sm">check_circle</span>
+                        Real-time drift compensation
+                    </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="relative rounded-[2.5rem] overflow-hidden p-12 md:p-24 text-center">
+<div class="absolute inset-0 bg-gradient-to-r from-neuro-blue via-neuro-purple to-neuro-blue bg-[length:200%_auto] animate-[gradient_8s_ease_infinite]"></div>
+<div class="absolute inset-0 bg-black/10 backdrop-blur-[2px]"></div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Deploy NeuroGuard <br/>to Your Workforce</h2>
+<p class="text-white/80 text-lg mb-12 leading-relaxed">
+                    Join the vanguard of organizations prioritizing biological health alongside performance. Schedule a clinical demonstration today.
+                </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="px-10 py-5 bg-white text-bg-main rounded-2xl font-bold hover:shadow-2xl transition-all">
+                        Request Enterprise Pilot
+                    </button>
+<button class="px-10 py-5 bg-transparent border-2 border-white/50 text-white rounded-2xl font-bold hover:bg-white/10 transition-all">
+                        Download Whitepaper
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-20 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-16 mb-20">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-8">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-neuro-blue absolute text-3xl opacity-50">shield</span>
+<span class="material-symbols-outlined text-neuro-purple relative text-xl">psychology</span>
+</div>
+<span class="font-heading font-bold text-lg tracking-tight">NeuroGuard</span>
+</div>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Redefining workplace health through the intersection of bio-sensing and artificial intelligence.
+                </p>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer hover:bg-neuro-blue/20 transition-colors">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer hover:bg-neuro-blue/20 transition-colors">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</div>
+</div>
+</div>
+<div>
+<h6 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Technology</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Sensor Mesh</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">ML Methodology</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Data Security</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Ecosystem</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Clinical Trials</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Case Studies</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Ethics Board</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Hardware Partners</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-300">Company</h6>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-neuro-blue transition-colors" href="#">About Systems</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Press Kit</a></li>
+<li><a class="hover:text-neuro-blue transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="font-mono text-[10px] text-slate-600 uppercase tracking-[0.3em]">
+                © 2024 NEUROGUARD SYSTEMS. PROPRIETARY CLINICAL TECH.
+            </div>
+<div class="flex gap-8 text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+<a class="hover:text-white transition-colors" href="#">Privacy Protocol</a>
+<a class="hover:text-white transition-colors" href="#">SLA Agreement</a>
+<a class="hover:text-white transition-colors" href="#">Compliance</a>
+</div>
+</div>
+</div>
+</footer>
+<style>
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+
+</body></html>

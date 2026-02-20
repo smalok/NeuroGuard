@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard - AI-Powered Burnout Detection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3680f7",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0e1a",
+                        "surface-dark": "#111827",
+                        "input-dark": "#1a2235",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .ecg-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .glow-blue {
+            box-shadow: 0 0 15px rgba(54, 128, 247, 0.3);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #3680f7 0%, #7c3aed 100%);
+        }
+        .grid-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(54, 128, 247, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center overflow-hidden">
+<div class="flex w-full h-screen">
+<!-- LEFT HALF: BRANDING & ECG -->
+<div class="hidden lg:flex flex-col justify-between w-1/2 bg-background-dark p-16 relative overflow-hidden border-r border-slate-800">
+<!-- Grid Background Overlay -->
+<div class="absolute inset-0 grid-bg opacity-40"></div>
+<!-- Branding Header -->
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-12">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center glow-blue">
+<span class="material-icons text-white">security</span>
+</div>
+<span class="text-2xl font-bold tracking-tight text-white">NeuroGuard</span>
+</div>
+<h1 class="text-6xl font-bold leading-tight text-white mb-6">
+                    Detect Burnout <br/>
+<span class="text-primary">Before It Hits.</span>
+</h1>
+<p class="text-slate-400 text-xl max-w-md">
+                    Clinical-grade AI monitoring for high-performance teams. Protecting mental health with data-driven precision.
+                </p>
+</div>
+<!-- ECG Visualization -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+<svg fill="none" height="200" viewbox="0 0 1000 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path class="ecg-line" d="M0 100H200L220 70L250 130L270 100H400L420 20L450 180L480 100H650L670 85L690 115L710 100H1000" stroke="#3680f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+<!-- Stats Footer -->
+<div class="relative z-10 flex gap-12 items-end">
+<div>
+<div class="text-4xl font-bold text-white">98%</div>
+<div class="text-slate-500 uppercase tracking-widest text-xs font-semibold">Prediction Accuracy</div>
+</div>
+<div>
+<div class="text-4xl font-bold text-white">24/7</div>
+<div class="text-slate-500 uppercase tracking-widest text-xs font-semibold">Real-time Analysis</div>
+</div>
+<div class="h-12 w-px bg-slate-800"></div>
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCopKnJAr3cl64Ub1wF5ZxgkhSv8Rv39BgOjNUW1kRP-HgTlRcSFRWkCV6dVgLGsn2eDvw2HtHojXOdGrljl2Wcqy_f7rLSs1_-ddYZ-HbIPidJqIChn5w12VOY1bNB3JfEKW-XEJrz5_dWdQ8wcnL8b0soiqeIR8leXBruXkMZzsqCa_S4fBC6rVOLHu5xk02mHy1AtpkKFyy_sBjH7gYueJ904HRZQdwKYzo5naVeoNdYEQ-gl70OiWtBPODpSGjO6pCpbQsw6QJd"/>
+<img class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwna7wfIsSe_vLMb_TSSGvngiowbdQmS0-czdE_5ad1JektyGIc_GNRc1q4n2JaF8AwYNEy-ZmlOGB6NePwWmLZwa-q6HTDsPeYdk3bs32KAYMYeCuz9I3kwGYPBFDqcPJ_U7a3v7eabFAYq88EYX6e0KpEem4wPxlcBnbinUZPj-fQgH1wSKrHhg0qBzlMtRAkpUPz2H3zo-0lnGnbH6a0wHl4z-NDR3vwfSsqi5Hgo63Co39q9JyFLiPjRH4adClLPqrTpaF50ND"/>
+<img class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8PYdZ-OucLlXWAuMQd1KbeOJM5cDpyVYeS8PsBGDRO-NyQ3IAcrQRxi4dWKKjaeUB_8fxcCKpTx9V5GmvPCZs_OLaI_UEi9toqsJa6bfSLCZBnkdyqGJBV1ZOzePlWg7IG1Rt8Ri5qjatk0u2-xad7nbT097Xxlvbd0aME-9mpqXRx0e3-ydXov_XWHWXifSMJhnb87qaOffSPV9OdxB7U9vYOKYiVwHdidAN6YZS2tNOW4bIoCLCMsULCW_XLzEt3B0XXGlKCz3w"/>
+<div class="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-400">+5k</div>
+</div>
+</div>
+</div>
+<!-- RIGHT HALF: LOGIN FORM -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-6 bg-background-light dark:bg-background-dark">
+<div class="w-full max-w-md space-y-8">
+<!-- Login Card -->
+<div class="bg-white dark:bg-surface-dark p-10 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800">
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+<span class="material-icons text-primary text-3xl">psychology</span>
+</div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Welcome Back</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Sign in to your NeuroGuard dashboard</p>
+</div>
+<form action="#" class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 ml-1">Email Address</label>
+<div class="relative group">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors text-xl">alternate_email</span>
+<input class="w-full bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-slate-700 rounded-lg py-3.5 pl-12 pr-4 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-500" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
+<a class="text-xs font-semibold text-primary hover:text-primary/80 transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative group">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors text-xl">lock</span>
+<input class="w-full bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-slate-700 rounded-lg py-3.5 pl-12 pr-4 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-500" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-slate-300 rounded bg-slate-50 dark:bg-input-dark dark:border-slate-700" id="remember-me" type="checkbox"/>
+<label class="ml-3 text-sm text-slate-600 dark:text-slate-400" for="remember-me">Keep me signed in</label>
+</div>
+<!-- Sign In Button -->
+<button class="w-full gradient-btn text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/20 hover:opacity-90 transition-all flex items-center justify-center gap-2 group" type="submit">
+<span>Sign In to NeuroGuard</span>
+<span class="material-icons text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-800"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-4 bg-white dark:bg-surface-dark text-slate-500">Or continue with</span>
+</div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-input-dark hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-300">
+<img class="w-5 h-5" data-alt="Google login logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaMWqwW83N4Ecsc6F-YyeLf4J_qtSXWFjf5YgWJBkp5dT0BewLKpjq7KH6r53YpGyiQhx8o4weh23GtiMRqANiaiUdLEcUpMn4m9tTEa72ACMLds-hZp1LXzGpH6UIXVn8nczG41Edt9cTNY_t1g321VgF00ebq7mgmiyvX8zPAChoXGrQtlFKaHJOlhM8iKocmY_eMvrCVIGj-EFm-mucTeEPx3iFTTAgm_mvggwZmih5fP0a_Bay3P4wpMGLLMp7DR3DqdnvYsJa"/>
+<span class="text-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-input-dark hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-300">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+</svg>
+<span class="text-sm font-semibold">GitHub</span>
+</button>
+</div>
+<!-- Sign Up Link -->
+<p class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                        Don't have an account? 
+                        <a class="font-bold text-primary hover:underline underline-offset-4 decoration-2" href="#">Create Account</a>
+</p>
+</div>
+<!-- Clinical Badge -->
+<div class="flex justify-center items-center gap-6 opacity-50 grayscale hover:grayscale-0 transition-all cursor-default">
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-lg">verified</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">ISO 27001</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-lg">health_and_safety</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">HIPAA Compliant</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-lg">psychology_alt</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">AI Ethics Certified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

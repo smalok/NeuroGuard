@@ -1,0 +1,182 @@
+[
+    {
+        "hr": 65,
+        "hrv": 55,
+        "rmssd": 42,
+        "sdnn": 52,
+        "lf_hf": 1.2,
+        "emg_rms": 12,
+        "label": 0
+    },
+    {
+        "hr": 72,
+        "hrv": 60,
+        "rmssd": 45,
+        "sdnn": 58,
+        "lf_hf": 1.1,
+        "emg_rms": 15,
+        "label": 0
+    },
+    {
+        "hr": 68,
+        "hrv": 52,
+        "rmssd": 38,
+        "sdnn": 48,
+        "lf_hf": 1.3,
+        "emg_rms": 10,
+        "label": 0
+    },
+    {
+        "hr": 70,
+        "hrv": 58,
+        "rmssd": 44,
+        "sdnn": 55,
+        "lf_hf": 0.9,
+        "emg_rms": 14,
+        "label": 0
+    },
+    {
+        "hr": 62,
+        "hrv": 65,
+        "rmssd": 50,
+        "sdnn": 62,
+        "lf_hf": 0.8,
+        "emg_rms": 11,
+        "label": 0
+    },
+    {
+        "hr": 75,
+        "hrv": 48,
+        "rmssd": 35,
+        "sdnn": 45,
+        "lf_hf": 1.4,
+        "emg_rms": 18,
+        "label": 0
+    },
+    {
+        "hr": 82,
+        "hrv": 45,
+        "rmssd": 32,
+        "sdnn": 40,
+        "lf_hf": 1.5,
+        "emg_rms": 20,
+        "label": 0
+    },
+    {
+        "hr": 95,
+        "hrv": 25,
+        "rmssd": 18,
+        "sdnn": 22,
+        "lf_hf": 2.5,
+        "emg_rms": 45,
+        "label": 1
+    },
+    {
+        "hr": 102,
+        "hrv": 20,
+        "rmssd": 15,
+        "sdnn": 18,
+        "lf_hf": 3.2,
+        "emg_rms": 55,
+        "label": 1
+    },
+    {
+        "hr": 98,
+        "hrv": 22,
+        "rmssd": 16,
+        "sdnn": 20,
+        "lf_hf": 2.8,
+        "emg_rms": 48,
+        "label": 1
+    },
+    {
+        "hr": 110,
+        "hrv": 15,
+        "rmssd": 12,
+        "sdnn": 15,
+        "lf_hf": 3.5,
+        "emg_rms": 60,
+        "label": 1
+    },
+    {
+        "hr": 92,
+        "hrv": 28,
+        "rmssd": 20,
+        "sdnn": 25,
+        "lf_hf": 2.2,
+        "emg_rms": 35,
+        "label": 1
+    },
+    {
+        "hr": 66,
+        "hrv": 53,
+        "rmssd": 40,
+        "sdnn": 50,
+        "lf_hf": 1.1,
+        "emg_rms": 13,
+        "label": 0
+    },
+    {
+        "hr": 71,
+        "hrv": 59,
+        "rmssd": 46,
+        "sdnn": 56,
+        "lf_hf": 1.0,
+        "emg_rms": 14,
+        "label": 0
+    },
+    {
+        "hr": 105,
+        "hrv": 18,
+        "rmssd": 14,
+        "sdnn": 16,
+        "lf_hf": 3.0,
+        "emg_rms": 52,
+        "label": 1
+    },
+    {
+        "hr": 88,
+        "hrv": 30,
+        "rmssd": 22,
+        "sdnn": 28,
+        "lf_hf": 2.0,
+        "emg_rms": 30,
+        "label": 1
+    },
+    {
+        "hr": 64,
+        "hrv": 62,
+        "rmssd": 48,
+        "sdnn": 60,
+        "lf_hf": 0.85,
+        "emg_rms": 11,
+        "label": 0
+    },
+    {
+        "hr": 115,
+        "hrv": 12,
+        "rmssd": 10,
+        "sdnn": 12,
+        "lf_hf": 4.0,
+        "emg_rms": 65,
+        "label": 1
+    },
+    {
+        "hr": 78,
+        "hrv": 42,
+        "rmssd": 30,
+        "sdnn": 38,
+        "lf_hf": 1.6,
+        "emg_rms": 22,
+        "label": 0
+    },
+    {
+        "hr": 96,
+        "hrv": 24,
+        "rmssd": 17,
+        "sdnn": 21,
+        "lf_hf": 2.6,
+        "emg_rms": 40,
+        "label": 1
+    }
+]

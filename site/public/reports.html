@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard Reports &amp; AI Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "sidebar-dark": "#0a0e1a",
+                        "card-dark": "#1a2430",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .bg-gradient-ai { background: linear-gradient(135deg, #2b8cee 0%, #8b5cf6 100%); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Sidebar Navigation -->
+<aside class="fixed top-0 left-0 h-screen w-64 bg-sidebar-dark border-r border-slate-800 z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-xl">psychology</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">NEURO<span class="text-primary">GUARD</span></span>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors" href="#">
+<span class="material-icons">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors" href="#">
+<span class="material-icons">insights</span>
+<span>Live Stream</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-lg shadow-lg shadow-primary/20" href="#">
+<span class="material-icons">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors" href="#">
+<span class="material-icons">people</span>
+<span>Patients</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors" href="#">
+<span class="material-icons">settings</span>
+<span>System Config</span>
+</a>
+</nav>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-slate-700">
+<img alt="Clinician Profile" class="w-full h-full object-cover" data-alt="Profile photo of a medical professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkDEEZfqv7QZdV4TxkOEdAaSjMGedZVytDHkQ8uvCEk6Th-sZw4Dkzp8KY2Pgt3SpxKcbkuHjbc7ph0JfC7E-61H77lGN4CUDax6OlIGKh52DP32cSdA35h-YNAlA2WpuWyapiaWhpW5cQF2vNJJOeOEFt9YPSYjiwII4f_BgillCUOAKicWRgRJGKtK8GPTx1Eo8aEduJkfbMCygp1MCouHWVwlQQdnCWk5iN6Y-1EB7fkE94s7ZGqkVz0YyrsX_VFrG60r5RNvW_"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Dr. Sarah Chen</p>
+<p class="text-xs text-slate-500 truncate">Neurologist</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 p-8 min-h-screen">
+<!-- Top Header -->
+<header class="flex items-center justify-between mb-8">
+<div>
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+<span>Dashboard</span>
+<span class="material-icons text-xs leading-none">chevron_right</span>
+<span class="text-primary font-medium">Reports</span>
+</nav>
+<h1 class="text-3xl font-bold">NeuroGuard Reports &amp; AI Insights</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800">
+<span class="material-icons">notifications</span>
+</button>
+<div class="h-8 w-px bg-slate-300 dark:bg-slate-700"></div>
+<p class="text-sm mono text-slate-500">SYSTEM STATUS: <span class="text-emerald-500">ONLINE</span></p>
+</div>
+</header>
+<!-- Generate New Report Section -->
+<section class="mb-8">
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons text-primary">add_chart</span>
+<h2 class="text-lg font-bold">Generate New Report</h2>
+</div>
+<div class="flex flex-wrap items-end gap-6">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">Date Range</label>
+<div class="flex items-center gap-2">
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-lg text-sm mono focus:ring-primary focus:border-primary" type="date"/>
+<span class="text-slate-400">to</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-lg text-sm mono focus:ring-primary focus:border-primary" type="date"/>
+</div>
+</div>
+<div class="w-48">
+<label class="block text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">Report Type</label>
+<select class="w-full bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>Daily Insight</option>
+<option selected="">Weekly Health Summary</option>
+<option>Full Clinical Audit</option>
+</select>
+</div>
+<button class="bg-gradient-ai text-white px-8 py-2.5 rounded-lg font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-icons text-lg">auto_awesome</span>
+                        Generate Report
+                    </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Weekly Health Report Preview -->
+<div class="xl:col-span-2 space-y-8">
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-emerald-500/10 flex items-center justify-center">
+<span class="material-icons text-emerald-500">verified</span>
+</div>
+<div>
+<h3 class="font-bold">Weekly Health Report</h3>
+<p class="text-xs text-slate-500 mono uppercase tracking-widest">UID: NG-8829-X-2024</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Download PDF">
+<span class="material-icons text-slate-400">picture_as_pdf</span>
+</button>
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Export CSV">
+<span class="material-icons text-slate-400">table_chart</span>
+</button>
+</div>
+</div>
+<div class="p-8">
+<!-- Patient Info Summary -->
+<div class="flex justify-between items-start mb-8">
+<div class="space-y-1">
+<p class="text-sm text-slate-500">Patient Subject</p>
+<p class="text-xl font-bold">Alexander J. Sterling</p>
+<p class="text-xs mono text-slate-400">D.O.B: 12/04/1988 | MALE</p>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    Normal Status
+                                </span>
+<p class="mt-2 text-xs text-slate-500">Report Date: Oct 21 - Oct 27, 2024</p>
+</div>
+</div>
+<!-- Vital Metric Tiles -->
+<div class="grid grid-cols-4 gap-4 mb-10">
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 mb-1 uppercase tracking-tighter font-semibold">Avg Heart Rate</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold mono">72</span>
+<span class="text-xs text-slate-400">BPM</span>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 mb-1 uppercase tracking-tighter font-semibold">HRV (RMSSD)</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold mono">48.2</span>
+<span class="text-xs text-slate-400">ms</span>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-primary/5 border border-primary/20">
+<p class="text-xs text-primary mb-1 uppercase tracking-tighter font-semibold">Burnout Score</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold mono text-primary">24</span>
+<span class="text-xs text-primary/60">/100</span>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 mb-1 uppercase tracking-tighter font-semibold">Total Sessions</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold mono">14</span>
+<span class="text-xs text-slate-400">ACTV</span>
+</div>
+</div>
+</div>
+<!-- Feature Contributions & Trends -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+<div>
+<h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-icons text-xs">bar_chart</span>
+                                    Burnout Factor Contribution
+                                </h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs mono text-slate-400">
+<span>HRV Variability</span>
+<span>42%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mono text-slate-400">
+<span>EMG RMS (Muscle Tension)</span>
+<span>28%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-violet-500 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mono text-slate-400">
+<span>Galvanic Skin Response</span>
+<span>15%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-sky-400 rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-icons text-xs">show_chart</span>
+                                    7-Day Trend
+                                </h4>
+<div class="h-24 flex items-end gap-1 px-2">
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-1/2"></div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-2/3"></div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-1/3"></div>
+<div class="flex-1 bg-primary rounded-t h-3/4"></div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-1/2"></div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-2/3"></div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-t h-1/4"></div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] mono text-slate-500 font-bold px-2">
+<span>MON</span>
+<span>TUE</span>
+<span>WED</span>
+<span>THU</span>
+<span>FRI</span>
+<span>SAT</span>
+<span>SUN</span>
+</div>
+</div>
+</div>
+<!-- AI Recommendations -->
+<div>
+<h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-icons text-xs text-violet-500">auto_awesome</span>
+                                AI-Powered Recommendations
+                            </h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-lg border-l-4 border-primary bg-primary/5">
+<p class="text-xs font-bold text-primary mb-1">Circadian Rhythm</p>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">Maintain current sleep schedule; peak HRV observed between 22:30-06:00.</p>
+</div>
+<div class="p-4 rounded-lg border-l-4 border-amber-500 bg-amber-500/5">
+<p class="text-xs font-bold text-amber-500 mb-1">Work Intervals</p>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">Implement Pomodoro breaks. Muscle tension peaks after 90m of focus.</p>
+</div>
+<div class="p-4 rounded-lg border-l-4 border-emerald-500 bg-emerald-500/5">
+<p class="text-xs font-bold text-emerald-500 mb-1">Recovery Phase</p>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">Great recovery indices post-Wednesday session. Continue current load.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content: Export & History -->
+<div class="space-y-8">
+<!-- Export Options -->
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-white dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
+<span class="material-icons text-red-500">picture_as_pdf</span>
+</div>
+<div>
+<p class="text-sm font-bold">Download PDF</p>
+<p class="text-xs text-slate-500">Clinical documentation</p>
+</div>
+</div>
+<span class="material-icons text-slate-400 group-hover:text-primary transition-colors">download</span>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
+<span class="material-icons text-blue-500">table_chart</span>
+</div>
+<div>
+<p class="text-sm font-bold">Export CSV</p>
+<p class="text-xs text-slate-500">Raw physiological data</p>
+</div>
+</div>
+<span class="material-icons text-slate-400 group-hover:text-primary transition-colors">download</span>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+<span class="material-icons text-emerald-500">alternate_email</span>
+</div>
+<div>
+<p class="text-sm font-bold">Share via Email</p>
+<p class="text-xs text-slate-500">Secure clinician portal</p>
+</div>
+</div>
+<span class="material-icons text-slate-400 group-hover:text-primary transition-colors">send</span>
+</div>
+</div>
+<!-- Report History Table -->
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-sm">Report History</h3>
+<button class="text-xs text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/30 text-slate-500 uppercase tracking-tighter">
+<th class="px-4 py-3 font-semibold">Type</th>
+<th class="px-4 py-3 font-semibold">Date Range</th>
+<th class="px-4 py-3 font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-4 py-3 font-medium">Daily</td>
+<td class="px-4 py-3 mono text-slate-500">Oct 20, 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-primary hover:text-primary/80"><span class="material-icons text-lg">visibility</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium">Weekly</td>
+<td class="px-4 py-3 mono text-slate-500">Oct 13 - Oct 19</td>
+<td class="px-4 py-3 text-right">
+<button class="text-primary hover:text-primary/80"><span class="material-icons text-lg">visibility</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium">Clinical</td>
+<td class="px-4 py-3 mono text-slate-500">Sep 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-primary hover:text-primary/80"><span class="material-icons text-lg">visibility</span></button>
+</td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium">Daily</td>
+<td class="px-4 py-3 mono text-slate-500">Oct 12, 2024</td>
+<td class="px-4 py-3 text-right">
+<button class="text-primary hover:text-primary/80"><span class="material-icons text-lg">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- System Usage Card -->
+<div class="bg-gradient-to-br from-sidebar-dark to-slate-900 rounded-xl p-6 border border-slate-800 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-white font-bold mb-1">AI Insights Storage</h4>
+<p class="text-slate-500 text-xs mb-4">Using 4.2GB of 10GB clinical cloud storage</p>
+<div class="h-2 w-full bg-slate-800 rounded-full mb-6">
+<div class="h-full bg-primary rounded-full" style="width: 42%"></div>
+</div>
+<button class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg transition-colors">Upgrade Plan</button>
+</div>
+<span class="material-icons absolute -bottom-4 -right-4 text-slate-800/20 text-8xl">cloud_done</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

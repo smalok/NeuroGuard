@@ -1,0 +1,157 @@
+.content {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.rangeBar {
+    display: flex;
+    gap: 2px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 4px;
+    width: fit-content;
+}
+
+.rangeBtn {
+    padding: var(--space-2) var(--space-5);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.rangeBtn:hover {
+    color: var(--text-secondary);
+}
+
+.rangeActive {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.chartCard {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+}
+
+.chartCard h4 {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-3);
+}
+
+.chartWrap {
+    height: 220px;
+}
+
+.zones {
+    display: flex;
+    gap: var(--space-6);
+    font-size: 0.7rem;
+    margin-bottom: var(--space-3);
+}
+
+.calendarGrid {
+    display: flex;
+    gap: 3px;
+    padding: var(--space-4) 0;
+}
+
+.calWeek {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.calDay {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.weeklySummaries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.weekCard {
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.weekCard strong {
+    font-size: 0.8rem;
+}
+
+.weekStats {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+}
+
+.tableCard {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    overflow-x: auto;
+}
+
+.tableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.tableHeader h4 {
+    font-size: 0.9rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.table tr:hover td {
+    background: var(--bg-elevated);
+}
+
+.pagination {
+    text-align: center;
+    padding: var(--space-4) 0 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

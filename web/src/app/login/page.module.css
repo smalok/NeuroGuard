@@ -1,0 +1,194 @@
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+.ecgBg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 500px 300px at 30% 40%, rgba(59, 130, 246, 0.1), transparent),
+        radial-gradient(ellipse 400px 250px at 70% 60%, rgba(168, 85, 247, 0.08), transparent);
+    pointer-events: none;
+}
+
+.leftContent {
+    position: relative;
+    padding: var(--space-12);
+    max-width: 450px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-10);
+}
+
+.logoIcon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+    color: white;
+}
+
+.shieldSm {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+}
+
+.logoText {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.3rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.leftTitle {
+    font-size: 2.2rem;
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+}
+
+.leftSub {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: 1.7;
+}
+
+.leftStats {
+    display: flex;
+    gap: var(--space-6);
+}
+
+.leftStats>div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.leftStats span {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent-blue);
+}
+
+.leftStats small {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-left: 1px solid var(--border);
+}
+
+.form {
+    width: 100%;
+    max-width: 400px;
+    padding: var(--space-8);
+}
+
+.form h2 {
+    margin-bottom: var(--space-2);
+}
+
+.formSub {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-8);
+}
+
+.field {
+    margin-bottom: var(--space-5);
+}
+
+.field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.labelRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.labelRow label {
+    margin-bottom: 0;
+}
+
+.forgot {
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+}
+
+.inputWrap {
+    position: relative;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px;
+}
+
+.switchAuth {
+    text-align: center;
+    margin-top: var(--space-6);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.switchAuth a {
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .left {
+        display: none;
+    }
+}

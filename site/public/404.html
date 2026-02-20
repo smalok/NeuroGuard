@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard | 404 Signal Lost</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3d7af5",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0a0e1a",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            overflow: hidden;
+        }
+        .neural-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 50% 50%, #161e33 0%, #0a0e1a 100%);
+        }
+        
+        .flatline-svg {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .glitch-text {
+            text-shadow: 0.05em 0 0 rgba(59, 130, 246, 0.75),
+                         -0.025em -0.05em 0 rgba(168, 85, 247, 0.75),
+                         0.025em 0.05em 0 rgba(59, 130, 246, 0.75);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ecg-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 60px;
+        }
+
+        .neural-particle {
+            position: absolute;
+            background: #3d7af5;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white transition-colors duration-300 min-h-screen flex flex-col items-center justify-center">
+<!-- Neural Background Elements -->
+<div class="neural-background overflow-hidden">
+<!-- Manually positioned "particles" to simulate the network -->
+<div class="neural-particle w-1 h-1 top-[20%] left-[15%]"></div>
+<div class="neural-particle w-2 h-2 top-[45%] left-[80%]"></div>
+<div class="neural-particle w-1.5 h-1.5 top-[70%] left-[25%]"></div>
+<div class="neural-particle w-1 h-1 top-[10%] left-[60%]"></div>
+<div class="neural-particle w-2 h-2 top-[85%] left-[75%]"></div>
+<div class="neural-particle w-1 h-1 top-[35%] left-[40%]"></div>
+<svg class="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3d7af5" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<!-- Main Content -->
+<main class="relative z-10 flex flex-col items-center text-center px-6">
+<!-- Error Code -->
+<h1 class="text-[120px] md:text-[180px] font-bold leading-none gradient-text tracking-tighter glitch-text select-none">
+            404
+        </h1>
+<!-- ECG Visual Metaphor -->
+<div class="ecg-container mt-2 mb-8 flex items-center justify-center">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 600 60">
+<!-- Flatline with a single small blip at the start -->
+<path class="flatline-svg" d="M0,30 L100,30 L110,10 L120,50 L130,30 L600,30" fill="none" stroke="url(#ecgGradient)" stroke-width="2.5"></path>
+<defs>
+<lineargradient id="ecgGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"></stop>
+<stop offset="30%" style="stop-color:#3b82f6;stop-opacity:0.8"></stop>
+<stop offset="100%" style="stop-color:#a855f7;stop-opacity:0.2"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Static/Noise Layer Overlay (Subtle) -->
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-20 pointer-events-none"></div>
+</div>
+<!-- Messaging -->
+<div class="max-w-xl">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Signal Lost</h2>
+<p class="font-sans text-[#94a3b8] text-lg mb-10 leading-relaxed">
+                The page you're looking for couldn't be found. <br class="hidden md:block"/>
+                The neural signal has been interrupted and we've lost communication.
+            </p>
+</div>
+<!-- Action Suite -->
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<a class="px-8 py-3.5 bg-gradient-to-r from-[#3b82f6] to-[#3d7af5] hover:from-[#3b82f6] hover:to-[#a855f7] text-white font-semibold rounded-lg shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2 group" href="#">
+<span class="material-icons text-xl group-hover:-translate-x-1 transition-transform">dashboard</span>
+                Back to Dashboard
+            </a>
+<a class="px-8 py-3.5 border border-white/10 hover:border-primary/50 hover:bg-primary/10 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2" href="#">
+<span class="material-icons text-xl">home</span>
+                Go Home
+            </a>
+</div>
+</main>
+<!-- Branding Footer -->
+<footer class="absolute bottom-12 left-0 right-0 z-10 flex flex-col items-center opacity-40 hover:opacity-100 transition-opacity duration-500">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<span class="material-icons text-primary text-3xl">psychology</span>
+<span class="material-icons absolute text-white text-[12px] top-1 right-1">security</span>
+</div>
+<span class="text-lg font-bold tracking-wider uppercase">NeuroGuard</span>
+</div>
+<div class="mt-2 text-[10px] text-[#94a3b8] uppercase tracking-[0.3em]">Neural Integrity Protection</div>
+</footer>
+<!-- Image for Theme Context (Hidden but meets requirements) -->
+<div class="hidden">
+<img alt="Neural Map" data-alt="Abstract blue and purple neural network visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5OsOrJffkykTaqrpZM0jlwfA6_Dhspyybgf5q9NDt1kiBBeq832GAbXnVX3vV-z6_qiWu8cJvGjM8AlC8TrcDe5sNbvj7GUtWjuXkxIZnZZFZv-SOF5NFRBPy3sNBPxKWxg1Z4d7vW-sDzPZL21998KepEW7nWLnHuyqX-PJX86BSsC3OzZzECsnFsGI8BotdHSJlNXk8rIKPdEIY0JFZHVnYHhZnyJSPbKcdQpBfkh7h8IZWxWyASjsd6Ba5YmG1T9FWK0jqyLtX"/>
+<div data-location="Silicon Valley" style=""></div>
+</div>
+</body></html>

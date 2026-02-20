@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard Real-time Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3680f7",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0e1a",
+                        "card-dark": "#111827",
+                        "accent-purple": "#8b5cf6",
+                        "accent-green": "#10b981",
+                        "accent-red": "#ef4444"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .waveform-grid {
+            background-image: linear-gradient(rgba(54, 128, 247, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(54, 128, 247, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display selection:bg-primary/30">
+<div class="flex min-h-screen overflow-hidden">
+<!-- LEFT SIDEBAR -->
+<aside class="w-64 bg-background-dark border-r border-white/5 flex flex-col fixed h-full z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-white text-xl">psychology</span>
+</div>
+<span class="text-xl font-bold tracking-tight">NeuroGuard</span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-icons-round text-[20px]">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-icons-round text-[20px]">monitor_heart</span>
+<span>ECG Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-icons-round text-[20px]">sensors</span>
+<span>EMG Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-icons-round text-[20px]">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-icons-round text-[20px]">description</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-[20px]">notifications</span>
+<span>Alerts</span>
+</div>
+<span class="bg-accent-red text-[10px] text-white font-bold px-1.5 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-colors" href="#">
+<span class="material-icons-round text-[20px]">devices</span>
+<span>Device</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-white/5">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-10 h-10 rounded-full bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkig55DEBjGtU4xmxuFct2eWeizq80q75i8WkIkxY5z9zotmdSGOdrMHDg2IqkfzSyOOxQ_L-TwYCwco7XM_dazN4ZalwP_eorJqyzkznwe1N9xa622Q9qedpqpZ8JXU2U92ISqLCWVRMVgAMvUXAFTkSxeKnXeQ6aGnO3a5gjzBKVcKDH0PPbW2ARsxbuHuzd1tcNv7IZ867ZutguqEUVElzACw6orEhIV5Ow3LGVp-qhb_AbXf542E5tOjQsau0RDtUX6VYbI9lv"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Dr. Aris Thorne</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-wider">Clinical Lead</span>
+</div>
+<button class="ml-auto text-slate-500 hover:text-white">
+<span class="material-icons-round text-sm">settings</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="ml-64 flex-1 bg-background-light dark:bg-background-dark min-h-screen">
+<!-- TOP HEADER -->
+<header class="h-16 border-b border-slate-200 dark:border-white/5 flex items-center justify-between px-8 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-40">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500">Dashboard</span>
+<span class="material-icons-round text-xs text-slate-500">chevron_right</span>
+<span class="font-medium">Overview</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-slate-100 dark:bg-white/5 border-none rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary transition-all" placeholder="Search data..." type="text"/>
+</div>
+<button class="text-slate-400 hover:text-primary relative">
+<span class="material-icons-round">notifications_none</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-accent-red rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-white/10"></div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-mono text-slate-400">SYS_ID: NG-9422</span>
+<div class="w-2 h-2 bg-accent-green rounded-full shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto space-y-6">
+<!-- ROW 1: Burnout Status -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-12 bg-card-dark rounded-xl p-8 border border-white/5 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-30"></div>
+<div class="flex flex-col items-center text-center">
+<h2 class="text-slate-400 text-sm font-medium tracking-widest uppercase mb-8">Current Burnout Risk</h2>
+<div class="relative flex items-center justify-center">
+<!-- Circular Gauge -->
+<svg class="w-64 h-64 -rotate-90">
+<circle class="text-white/5" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary drop-shadow-[0_0_12px_rgba(54,128,247,0.4)]" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-dasharray="690" stroke-dashoffset="455.4" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-6xl font-mono font-bold text-white tracking-tighter">34<span class="text-2xl text-slate-500">%</span></span>
+<div class="mt-2 px-3 py-1 bg-accent-green/10 border border-accent-green/20 rounded-full flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-accent-green rounded-full pulse-ring"></span>
+<span class="text-[10px] font-bold text-accent-green uppercase tracking-widest">Normal Status</span>
+</div>
+</div>
+</div>
+<p class="mt-8 text-slate-400 max-w-md">System analysis suggests high cognitive resilience and stable autonomic nervous system balance.</p>
+</div>
+</div>
+</div>
+<!-- ROW 2: Live Waveforms -->
+<div class="grid grid-cols-12 gap-6">
+<!-- ECG Card -->
+<div class="col-span-12 lg:col-span-6 bg-card-dark rounded-xl border border-white/5 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary">favorite</span>
+<h3 class="font-semibold text-sm">Live ECG Monitoring</h3>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono text-primary font-bold">72 BPM</span>
+<span class="bg-primary/20 text-[10px] text-primary px-2 py-0.5 rounded uppercase font-bold">Real-time</span>
+</div>
+</div>
+<div class="h-48 waveform-grid relative p-4 flex items-center overflow-hidden">
+<!-- SVG ECG Path simulation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 100">
+<path class="opacity-80" d="M0 50 L100 50 L110 30 L120 70 L130 50 L200 50 L210 10 L220 90 L230 50 L300 50 L310 30 L320 70 L330 50 L400 50 L410 10 L420 90 L430 50 L500 50 L510 30 L520 70 L530 50 L600 50 L610 10 L620 90 L630 50 L700 50 L800 50" fill="none" stroke="#3680f7" stroke-width="2"></path>
+<path class="drop-shadow-[0_0_8px_#3680f7]" d="M0 50 L100 50 L110 30 L120 70 L130 50 L200 50 L210 10 L220 90 L230 50 L300 50 L310 30 L320 70 L330 50 L400 50 L410 10 L420 90 L430 50 L500 50 L510 30 L520 70 L530 50 L600 50 L610 10 L620 90 L630 50 L700 50 L800 50" fill="none" stroke="#3680f7" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+<!-- EMG Card -->
+<div class="col-span-12 lg:col-span-6 bg-card-dark rounded-xl border border-white/5 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-accent-purple">bolt</span>
+<h3 class="font-semibold text-sm">Live EMG Monitoring</h3>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono text-accent-purple font-bold">45.2 uV RMS</span>
+<span class="bg-accent-purple/20 text-[10px] text-accent-purple px-2 py-0.5 rounded uppercase font-bold">Active</span>
+</div>
+</div>
+<div class="h-48 waveform-grid relative p-4 flex items-center overflow-hidden">
+<!-- SVG EMG Path simulation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 100">
+<path class="opacity-80" d="M0 50 L10 45 L20 55 L30 40 L40 60 L50 30 L60 70 L70 48 L80 52 L90 35 L100 65 L110 40 L120 55 L130 45 L140 50 L150 40 L160 60 L170 30 L180 75 L190 25 L200 50 L210 45 L220 55 L230 35 L240 65 L250 20 L260 80 L270 45 L280 50 L290 40 L300 60 L310 30 L320 70 L330 48 L340 52 L350 35 L360 65 L370 40 L380 55 L390 45 L400 50 L410 40 L420 60 L430 30 L440 75 L450 25 L460 50 L470 45 L480 55 L490 35 L500 65 L510 20 L520 80 L530 45 L540 50 L550 40 L560 60 L570 30 L580 70 L590 48 L600 52 L610 35 L620 65 L630 40 L640 55 L650 45 L660 50 L670 40 L680 60 L690 30 L700 75 L710 25 L720 50 L730 45 L740 55 L750 35 L760 65 L770 20 L780 80 L790 45 L800 50" fill="none" stroke="#8b5cf6" stroke-width="1"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- ROW 3: Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Heart Rate -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">Heart Rate</span>
+<span class="material-icons-round text-primary text-sm">favorite</span>
+</div>
+<div class="font-mono text-2xl font-bold">72 <span class="text-xs text-slate-500">bpm</span></div>
+<div class="mt-2 h-6 flex items-end gap-0.5">
+<div class="bg-primary/20 w-full h-2 rounded-full overflow-hidden relative">
+<div class="absolute inset-y-0 left-0 bg-primary w-2/3"></div>
+</div>
+</div>
+</div>
+<!-- HRV -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">HRV</span>
+<span class="material-icons-round text-primary text-sm">graphic_eq</span>
+</div>
+<div class="font-mono text-2xl font-bold">64 <span class="text-xs text-slate-500">ms</span></div>
+<div class="mt-2 flex items-center text-[10px] text-accent-green font-bold">
+<span class="material-icons-round text-xs">arrow_upward</span> 12%
+                        </div>
+</div>
+<!-- RMSSD -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">RMSSD</span>
+<span class="material-icons-round text-primary text-sm">waves</span>
+</div>
+<div class="font-mono text-2xl font-bold">48.2 <span class="text-xs text-slate-500">ms</span></div>
+<div class="mt-2 flex items-center text-[10px] text-accent-green font-bold">
+<span class="material-icons-round text-xs">arrow_upward</span> 3%
+                        </div>
+</div>
+<!-- SDNN -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">SDNN</span>
+<span class="material-icons-round text-primary text-sm">timeline</span>
+</div>
+<div class="font-mono text-2xl font-bold">54.0 <span class="text-xs text-slate-500">ms</span></div>
+<div class="mt-2 flex items-center text-[10px] text-slate-500">
+                            Stable
+                        </div>
+</div>
+<!-- LF/HF -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">LF/HF Ratio</span>
+<span class="material-icons-round text-primary text-sm">balance</span>
+</div>
+<div class="font-mono text-2xl font-bold">1.2 <span class="text-xs text-slate-500">pts</span></div>
+<div class="mt-2 flex items-center text-[10px] text-accent-green font-bold">
+<span class="material-icons-round text-xs">arrow_downward</span> 5%
+                        </div>
+</div>
+<!-- EMG RMS -->
+<div class="bg-card-dark p-4 rounded-xl border border-white/5 hover:border-accent-purple/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 font-medium">EMG RMS</span>
+<span class="material-icons-round text-accent-purple text-sm">bolt</span>
+</div>
+<div class="font-mono text-2xl font-bold">45.2 <span class="text-xs text-slate-500">uV</span></div>
+<div class="mt-2 flex items-center text-[10px] text-accent-purple font-bold">
+                            Muscular Load: Low
+                        </div>
+</div>
+</div>
+<!-- ROW 4: Stress & Trends -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Stress Meter -->
+<div class="col-span-12 lg:col-span-4 bg-card-dark rounded-xl p-6 border border-white/5 flex flex-col">
+<h3 class="text-sm font-semibold mb-6 flex items-center justify-between">
+                            Stress Meter
+                            <span class="text-xs font-normal text-slate-400">Current Level</span>
+</h3>
+<div class="relative flex-1 flex flex-col items-center justify-center">
+<!-- Semi-circle SVG -->
+<svg class="w-full max-w-[240px]" viewbox="0 0 200 100">
+<path class="text-white/5" d="M 20 90 A 80 80 0 0 1 180 90" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="12"></path>
+<path class="text-accent-green drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]" d="M 20 90 A 80 80 0 0 1 70 25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="12"></path>
+</svg>
+<div class="mt-[-20px] text-center">
+<span class="text-4xl font-mono font-bold">3.2</span>
+<p class="text-[10px] uppercase font-bold tracking-widest text-accent-green mt-1">Low Stress</p>
+</div>
+<div class="w-full flex justify-between px-4 mt-6 text-[10px] text-slate-500 font-mono">
+<span>RECOVERY (0)</span>
+<span>PEAK (10)</span>
+</div>
+</div>
+</div>
+<!-- 7-Day Trend Chart -->
+<div class="col-span-12 lg:col-span-8 bg-card-dark rounded-xl p-6 border border-white/5">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-sm font-semibold">Biometric Trends (7 Days)</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] text-slate-400">HR</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-purple"></span>
+<span class="text-[10px] text-slate-400">HRV</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+<span class="text-[10px] text-slate-400">Burnout</span>
+</div>
+</div>
+</div>
+<div class="h-48 flex items-end justify-between px-2 gap-4">
+<!-- Simple bar/trend visualization placeholder -->
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-20 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-16 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">MON</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-24 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-14 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">TUE</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-22 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-18 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">WED</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-26 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-20 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">THU</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-28 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-12 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">FRI</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary/40 h-24 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple/40 h-22 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">SAT</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full bg-white/5 rounded-t-sm h-32 relative">
+<div class="absolute bottom-0 inset-x-0 bg-primary h-22 rounded-t-sm"></div>
+<div class="absolute bottom-0 inset-x-2 bg-accent-purple h-25 rounded-t-sm"></div>
+</div>
+<span class="text-[10px] text-slate-200 font-bold font-mono">TODAY</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 5: Alerts & Actions -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Recent Alerts -->
+<div class="col-span-12 lg:col-span-7 bg-card-dark rounded-xl border border-white/5 flex flex-col">
+<div class="p-4 border-b border-white/5 flex justify-between items-center">
+<h3 class="text-sm font-semibold">System Alerts</h3>
+<button class="text-xs text-primary hover:underline">Clear All</button>
+</div>
+<div class="divide-y divide-white/5">
+<div class="p-4 flex items-start gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-2 h-2 mt-1.5 rounded-full bg-accent-red shadow-[0_0_6px_#ef4444]"></div>
+<div class="flex-1">
+<p class="text-xs font-medium text-slate-200">Irregular HRV detected during sleep cycle</p>
+<span class="text-[10px] text-slate-500 font-mono">14:22 • Priority: High</span>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-white transition-opacity">
+<span class="material-icons-round text-sm">visibility</span>
+</button>
+</div>
+<div class="p-4 flex items-start gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-2 h-2 mt-1.5 rounded-full bg-amber-500"></div>
+<div class="flex-1">
+<p class="text-xs font-medium text-slate-200">Device battery level below 15%</p>
+<span class="text-[10px] text-slate-500 font-mono">12:05 • Priority: Medium</span>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-white transition-opacity">
+<span class="material-icons-round text-sm">visibility</span>
+</button>
+</div>
+<div class="p-4 flex items-start gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-2 h-2 mt-1.5 rounded-full bg-primary"></div>
+<div class="flex-1">
+<p class="text-xs font-medium text-slate-200">Calibration scheduled in 2 hours</p>
+<span class="text-[10px] text-slate-500 font-mono">10:30 • Priority: Low</span>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-white transition-opacity">
+<span class="material-icons-round text-sm">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="col-span-12 lg:col-span-5 bg-card-dark rounded-xl p-6 border border-white/5">
+<h3 class="text-sm font-semibold mb-6">Quick Actions</h3>
+<div class="grid grid-cols-1 gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-3 transition-all">
+<span class="material-icons-round text-[20px]">play_arrow</span>
+                                Start Recording
+                            </button>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-medium py-3 rounded-lg flex items-center justify-center gap-3 transition-all">
+<span class="material-icons-round text-[20px]">summarize</span>
+                                Generate Report
+                            </button>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-medium py-3 rounded-lg flex items-center justify-center gap-3 transition-all">
+<span class="material-icons-round text-[20px]">tune</span>
+                                Calibrate System
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

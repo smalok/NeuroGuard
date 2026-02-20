@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroGuard EMG Detail Monitor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a855f7",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#0a0e1a",
+                        "card-dark": "#121212",
+                        "panel-dark": "#1e1e2e",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .waveform-grid {
+            background-image: 
+                linear-gradient(to right, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden font-display">
+<!-- LEFT SIDEBAR -->
+<aside class="w-64 flex-shrink-0 bg-[#0a0e1a] border-r border-white/5 flex flex-col h-screen">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-white text-xl">psychology</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">NeuroGuard</h1>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 py-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-icons-round">dashboard</span>
+<span class="font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20 transition-all shadow-[0_0_15px_rgba(168,85,247,0.1)]" href="#">
+<span class="material-icons-round">analytics</span>
+<span class="font-medium">EMG Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-icons-round">history</span>
+<span class="font-medium">Session History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-icons-round">settings</span>
+<span class="font-medium">Configuration</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-white/5">
+<div class="bg-white/5 rounded-xl p-4">
+<div class="flex items-center gap-3 mb-3">
+<img class="w-10 h-10 rounded-full border border-primary/30" data-alt="Portrait of a medical professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdyOgvQhOeq_UFEWhFGkLAOausExsS5XqRSztGpIhYsDKOqBjdl2YuHsTDyw3TLbpTBXREsiyA1t1-gphxSh7EsvS62LkGudkJQNkRvJ5T197NiAOfiqf7VLkHc3VnzYQ7g6Ca4iKYUawm91GAxluWpmK1_DQxSmGJdwjl4HztSOOCyzHuqGRZAVOkla-MaHdZHTVBA498nhiAJ47_lZ4qLQSIPQ8c1OotcWg6hXwPFXsfas6dnY99yKZuV6AyTmRdhHT7fE8cIpvx"/>
+<div>
+<p class="text-sm font-semibold text-white">Dr. Aris Thorne</p>
+<p class="text-xs text-slate-500">Neuro-specialist</p>
+</div>
+</div>
+<button class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">Logout</button>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TOP HEADER -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-card-dark border-b border-white/5">
+<div class="flex items-center gap-4 text-sm font-medium">
+<span class="text-slate-500">Dashboard</span>
+<span class="material-icons-round text-xs text-slate-600">chevron_right</span>
+<span class="text-primary">EMG Monitor</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-xs font-bold text-primary tracking-widest uppercase">Live Connection</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-slate-400">battery_charging_full</span>
+<span class="mono text-xs text-slate-400">92%</span>
+</div>
+<span class="material-icons-round text-slate-400">notifications</span>
+</div>
+</header>
+<!-- CONTENT SCROLL AREA -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-6 bg-background-light dark:bg-[#0d0d16]">
+<!-- SECTION 1: WAVEFORM -->
+<section class="bg-white dark:bg-card-dark rounded-xl border border-white/5 overflow-hidden shadow-xl">
+<div class="p-4 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-primary">insights</span>
+<h3 class="font-semibold text-sm">Real-time EMG Waveform</h3>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-black/20 px-3 py-1 rounded-lg">
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">RMS</span>
+<span class="mono text-primary font-bold text-sm">45.2 µV</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 hover:bg-white/5 rounded text-slate-500"><span class="material-icons-round text-sm">remove_circle_outline</span></button>
+<span class="text-[10px] mono text-slate-400 px-2 uppercase">Gain 1.0x</span>
+<button class="p-1 hover:bg-white/5 rounded text-slate-500"><span class="material-icons-round text-sm">add_circle_outline</span></button>
+</div>
+<button class="flex items-center gap-1 text-[10px] font-bold uppercase text-slate-400 hover:text-white px-2 py-1 rounded-md border border-white/10">
+<span class="material-icons-round text-sm">tune</span> Filter: On
+                        </button>
+</div>
+</div>
+<div class="h-64 waveform-grid relative flex items-center">
+<!-- EMG Signal Visualization Simulation -->
+<svg class="w-full h-48 px-4 opacity-80" viewbox="0 0 1000 200">
+<path d="M0 100 Q 10 30, 20 100 T 40 100 T 60 40 T 80 160 T 100 80 T 120 120 T 140 100 T 160 50 T 180 150 T 200 100 T 220 90 T 240 110 T 260 100 T 280 20 T 300 180 T 320 100 T 340 70 T 360 130 T 380 100 T 400 95 T 420 105 T 440 100 T 460 10 T 480 190 T 500 100 T 520 60 T 540 140 T 560 100 T 580 98 T 600 102 T 620 100 T 640 40 T 660 160 T 680 100 T 700 80 T 720 120 T 740 100 T 760 30 T 780 170 T 800 100 T 820 95 T 840 105 T 860 100 T 880 15 T 900 185 T 920 100 T 940 70 T 960 130 T 980 100 T 1000 100" fill="none" stroke="#a855f7" stroke-width="2"></path>
+<path d="M0 100 Q 10 60, 20 100 T 40 100 T 60 70 T 80 130 T 100 90 T 120 110 T 140 100" fill="rgba(168, 85, 247, 0.1)" stroke="none"></path>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-r from-card-dark/20 via-transparent to-card-dark pointer-events-none"></div>
+</div>
+</section>
+<!-- SECTION 2: METRIC CARDS -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- RMS -->
+<div class="bg-white dark:bg-card-dark p-5 rounded-xl border border-white/5 flex flex-col justify-between shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons-round">bolt</span>
+</div>
+<span class="text-[10px] font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded uppercase tracking-wider">Stable</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mb-1">Root Mean Square</p>
+<h4 class="mono text-3xl font-bold">45.2 <span class="text-sm font-normal text-slate-500">µV</span></h4>
+</div>
+</div>
+<!-- MAV -->
+<div class="bg-white dark:bg-card-dark p-5 rounded-xl border border-white/5 flex flex-col justify-between shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons-round">waves</span>
+</div>
+<span class="text-[10px] font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded uppercase tracking-wider">Normal</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mb-1">Mean Absolute Value</p>
+<h4 class="mono text-3xl font-bold">38.7 <span class="text-sm font-normal text-slate-500">µV</span></h4>
+</div>
+</div>
+<!-- Median Frequency -->
+<div class="bg-white dark:bg-card-dark p-5 rounded-xl border border-primary/20 flex flex-col justify-between shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-yellow-500/5 -rotate-45 translate-x-8 -translate-y-8"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500">
+<span class="material-icons-round">trending_down</span>
+</div>
+<span class="text-[10px] font-bold text-yellow-500 bg-yellow-500/10 px-2 py-0.5 rounded uppercase tracking-wider">Declining</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mb-1">Median Frequency</p>
+<h4 class="mono text-3xl font-bold text-yellow-500">82.4 <span class="text-sm font-normal text-slate-500">Hz</span></h4>
+</div>
+</div>
+<!-- Variance -->
+<div class="bg-white dark:bg-card-dark p-5 rounded-xl border border-white/5 flex flex-col justify-between shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons-round">analytics</span>
+</div>
+<span class="text-[10px] font-bold text-slate-500 bg-white/5 px-2 py-0.5 rounded uppercase tracking-wider">Low Var</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mb-1">Variance (σ²)</p>
+<h4 class="mono text-3xl font-bold">2.14 <span class="text-sm font-normal text-slate-500">mV²</span></h4>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ANALYTICAL CHARTS -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Fatigue Index -->
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-white/5 shadow-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-sm tracking-tight flex items-center gap-2">
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+                            Fatigue Index Analysis
+                        </h3>
+<span class="text-[10px] mono text-slate-500 uppercase tracking-widest">Δ 13 Hz decline</span>
+</div>
+<div class="h-48 relative flex items-end">
+<!-- Zones Background -->
+<div class="absolute inset-0 flex flex-col">
+<div class="h-1/3 w-full bg-red-500/5 border-b border-red-500/10 flex items-start px-2 py-1"><span class="text-[8px] text-red-500 font-bold uppercase">Critical</span></div>
+<div class="h-1/3 w-full bg-yellow-500/5 border-b border-yellow-500/10 flex items-start px-2 py-1"><span class="text-[8px] text-yellow-500 font-bold uppercase">Caution</span></div>
+<div class="h-1/3 w-full bg-green-500/5 flex items-start px-2 py-1"><span class="text-[8px] text-green-500 font-bold uppercase">Optimal</span></div>
+</div>
+<!-- Line Chart Simulation -->
+<svg class="w-full h-full relative z-10 px-4" viewbox="0 0 400 100">
+<polyline fill="none" points="0,20 40,25 80,22 120,35 160,40 200,45 240,55 280,62 320,75 360,82 400,88" stroke="#a855f7" stroke-width="2"></polyline>
+<circle cx="360" cy="82" fill="#a855f7" r="3"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 text-[10px] mono text-slate-500">
+<span>T: 0:00</span>
+<span>Session Midpoint</span>
+<span>Current</span>
+</div>
+</div>
+<!-- Muscle Activation Heatmap -->
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-white/5 shadow-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-sm tracking-tight flex items-center gap-2">
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+                            Activation Timeline Heatmap
+                        </h3>
+<div class="flex items-center gap-2">
+<div class="flex gap-1 h-2 w-16 bg-slate-800 rounded-full overflow-hidden">
+<div class="w-1/4 bg-primary/20"></div>
+<div class="w-1/4 bg-primary/40"></div>
+<div class="w-1/4 bg-primary/70"></div>
+<div class="w-1/4 bg-primary"></div>
+</div>
+<span class="text-[8px] mono text-slate-500 uppercase">Intensity</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4">
+<span class="text-[10px] mono w-12 text-slate-500">CH-1</span>
+<div class="flex-1 h-6 flex gap-1">
+<div class="h-full w-[10%] bg-primary/10 rounded-sm"></div>
+<div class="h-full w-[5%] bg-primary/40 rounded-sm"></div>
+<div class="h-full w-[20%] bg-primary rounded-sm"></div>
+<div class="h-full w-[15%] bg-primary/20 rounded-sm"></div>
+<div class="h-full w-[30%] bg-primary/60 rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/10 rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/80 rounded-sm"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] mono w-12 text-slate-500">CH-2</span>
+<div class="flex-1 h-6 flex gap-1">
+<div class="h-full w-[15%] bg-primary/50 rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/10 rounded-sm"></div>
+<div class="h-full w-[5%] bg-primary/20 rounded-sm"></div>
+<div class="h-full w-[40%] bg-primary rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/40 rounded-sm"></div>
+<div class="h-full w-[20%] bg-primary/10 rounded-sm"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] mono w-12 text-slate-500">CH-3</span>
+<div class="flex-1 h-6 flex gap-1">
+<div class="h-full w-[30%] bg-primary/80 rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/20 rounded-sm"></div>
+<div class="h-full w-[20%] bg-primary/40 rounded-sm"></div>
+<div class="h-full w-[10%] bg-primary/10 rounded-sm"></div>
+<div class="h-full w-[30%] bg-primary rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: CONTRACTION DETECTION -->
+<section class="bg-white dark:bg-card-dark rounded-xl border border-white/5 shadow-xl overflow-hidden">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-sm tracking-tight flex items-center gap-2">
+<span class="material-icons-round text-primary text-lg">timer</span>
+                            Contraction Events
+                        </h3>
+<div class="flex gap-4">
+<div class="text-center">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Count</p>
+<p class="mono text-sm font-bold">14</p>
+</div>
+<div class="text-center border-l border-white/10 pl-4">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Avg Dur</p>
+<p class="mono text-sm font-bold">1.2s</p>
+</div>
+<div class="text-center border-l border-white/10 pl-4">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Peak</p>
+<p class="mono text-sm font-bold text-primary">156.4 µV</p>
+</div>
+</div>
+</div>
+<div class="h-12 bg-black/30 rounded-lg flex relative items-center px-2">
+<!-- Detection Highlights -->
+<div class="absolute left-[10%] w-[5%] h-full bg-primary/40 border-x border-primary/60"></div>
+<div class="absolute left-[30%] w-[8%] h-full bg-primary/40 border-x border-primary/60"></div>
+<div class="absolute left-[55%] w-[4%] h-full bg-primary/40 border-x border-primary/60"></div>
+<div class="absolute left-[70%] w-[12%] h-full bg-primary/40 border-x border-primary/60 group cursor-help">
+<div class="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-24 bg-panel-dark p-2 rounded border border-primary/30 text-[10px] mono z-20">
+                                Peak: 142µV<br/>Dur: 1.8s
+                            </div>
+</div>
+<!-- Reference line -->
+<div class="w-full h-[1px] bg-white/5"></div>
+</div>
+<div class="flex justify-between mt-2 px-2 text-[9px] mono text-slate-600">
+<span>-60s</span>
+<span>-45s</span>
+<span>-30s</span>
+<span>-15s</span>
+<span class="text-primary font-bold">NOW</span>
+</div>
+</div>
+</section>
+</div>
+<!-- BOTTOM CONTROL BAR -->
+<footer class="h-20 bg-white dark:bg-card-dark border-t border-white/10 px-8 flex items-center justify-between shadow-[0_-10px_20px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-0.5">Session Time</p>
+<p class="mono text-2xl font-bold tracking-tighter">00:12:45.03</p>
+</div>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-0.5">Sample Rate</p>
+<p class="mono text-lg font-bold">2048 <span class="text-xs font-normal opacity-50">Hz</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all text-sm font-semibold">
+<span class="material-icons-round text-lg">flag</span>
+                    Mark Event
+                </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all text-sm font-semibold">
+<span class="material-icons-round text-lg">file_download</span>
+                    Export CSV
+                </button>
+<button class="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white font-bold text-sm shadow-[0_4px_15px_rgba(168,85,247,0.4)] hover:scale-[1.02] transition-transform">
+<span class="material-icons-round text-lg">radio_button_checked</span>
+                    Start Recording
+                </button>
+</div>
+</footer>
+</main>
+</body></html>

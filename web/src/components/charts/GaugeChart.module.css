@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.canvas {
+    display: block;
+}
+
+.classBadge {
+    font-size: 0.8rem;
+    padding: 4px 16px;
+}
