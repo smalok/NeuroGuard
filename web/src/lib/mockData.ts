@@ -81,9 +81,36 @@ export function generateAlerts(count = 6): Alert[] {
     }));
 }
 
+/**
+ * Generate a 1000-sample (10s at 100Hz) ADC ECG buffer for demo sessions.
+ * Uses generateECGPoint() to produce realistic PQRST waveforms, then maps
+ * the float mV values back to 10-bit ADC units (0-1023) as the device sends.
+ */
+function generateRawECGBuffer(bpmOffset = 0): number[] {
+    const hr = 72 + bpmOffset;
+    const result: number[] = [];
+    for (let i = 0; i < 1000; i++) {
+        const t = i / 100; // seconds
+        const period = 60 / hr;
+        const phase = (t % period) / period;
+        let v = 0;
+        if (phase > 0.1 && phase < 0.2) v = 0.15 * Math.sin(((phase - 0.1) / 0.1) * Math.PI);
+        else if (phase > 0.25 && phase < 0.28) v = -0.2 * Math.sin(((phase - 0.25) / 0.03) * Math.PI);
+        else if (phase > 0.28 && phase < 0.33) v = 1.2 * Math.sin(((phase - 0.28) / 0.05) * Math.PI);
+        else if (phase > 0.33 && phase < 0.36) v = -0.3 * Math.sin(((phase - 0.33) / 0.03) * Math.PI);
+        else if (phase > 0.45 && phase < 0.6) v = 0.25 * Math.sin(((phase - 0.45) / 0.15) * Math.PI);
+        v += (Math.random() - 0.5) * 0.03;
+        // Map mV back to 10-bit ADC: adc = (v / 1.5) * (1023/2) + 511
+        const adc = Math.round((v / 1.5) * 511.5 + 511.5);
+        result.push(Math.max(0, Math.min(1023, adc)));
+    }
+    return result;
+}
+
 export function generateSessionHistory(count = 10): SessionData[] {
     return Array.from({ length: count }, (_, i) => {
         const score = 20 + Math.floor(Math.random() * 55);
+        const bpmOffsets = [0, 5, -3, 8, -5, 12, -8, 3, -2, 6];
         return {
             id: `session-${i}`,
             date: new Date(Date.now() - i * 86400000),
@@ -92,6 +119,7 @@ export function generateSessionHistory(count = 10): SessionData[] {
             avgHRV: 30 + Math.floor(Math.random() * 25),
             burnoutScore: score,
             classification: score < 40 ? 'normal' as const : score < 70 ? 'high_stress' as const : 'burnout_risk' as const,
+            rawECG: generateRawECGBuffer(bpmOffsets[i % bpmOffsets.length]),
         };
     });
 }

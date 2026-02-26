@@ -1,0 +1,538 @@
+/* ECGReportModal.module.css */
+
+/* ─── Modal Overlay & Chrome ─────────────────────────────────── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    width: min(96vw, 1020px);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Toolbar (hidden on print) ─────────────────────────────────── */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #1a1f2e;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid #2d3548;
+    flex-shrink: 0;
+}
+
+.toolbarLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toolbarTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    letter-spacing: 0.01em;
+}
+
+.toolbarRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnPrint {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btnPrint:hover {
+    background: #2563eb;
+}
+
+.btnClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid #3d4560;
+    border-radius: 6px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btnClose:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+/* ─── Report Body ─────────────────────────────────── */
+.report {
+    padding: 28px 32px;
+    background: #ffffff;
+    color: #1a1a2e;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+/* ─── Report Header ─────────────────────────────────── */
+.reportHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 14px;
+}
+
+.reportHeaderLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.reportHeaderRight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+}
+
+.reportLogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reportLogoText {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1a2e;
+}
+
+.reportSubtitle {
+    font-size: 0.73rem;
+    color: #64748b;
+    letter-spacing: 0.02em;
+}
+
+.reportMeta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #334155;
+}
+
+.metaLabel {
+    font-weight: 600;
+    color: #64748b;
+}
+
+.mono {
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+/* ─── Divider ─────────────────────────────────── */
+.divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 14px 0;
+}
+
+/* ─── Info Row ─────────────────────────────────── */
+.infoRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.infoBlock {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.infoTitle {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3b82f6;
+    margin-bottom: 8px;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3px 10px;
+}
+
+.infoLabel {
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.infoValue {
+    color: #1e293b;
+}
+
+/* ─── Section Title ─────────────────────────────────── */
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+/* ─── Metrics Table ─────────────────────────────────── */
+.metricsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.metricsTable th {
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.metricsTable th:first-child {
+    border-radius: 6px 0 0 0;
+}
+
+.metricsTable th:last-child {
+    border-radius: 0 6px 0 0;
+    text-align: center;
+}
+
+.metricsTable td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+.metricsTable tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+.metricsTable tr:last-child td {
+    border-bottom: none;
+}
+
+.metricsTable td:last-child {
+    text-align: center;
+}
+
+.metricValue {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.normal {
+    color: #16a34a;
+    font-size: 0.75rem;
+}
+
+/* ─── Status Icons ─────────────────────────────────── */
+.iconGreen {
+    color: #16a34a;
+}
+
+.iconYellow {
+    color: #d97706;
+}
+
+.iconRed {
+    color: #dc2626;
+}
+
+/* ─── ECG Canvas Area ─────────────────────────────────── */
+.ecgWrap {
+    background: #fff9f7;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.ecgCanvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.ecgScaleBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 4px 0;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-family: monospace;
+}
+
+.ecgLegend {
+    display: flex;
+    gap: 20px;
+    padding: 6px 4px 0;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.legendPeak {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.legendGrid {
+    color: #9ca3af;
+}
+
+.legendCal {
+    color: #374151;
+    font-weight: 600;
+}
+
+.noSignal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 30px;
+    color: #64748b;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+/* ─── Rhythm Block ─────────────────────────────────── */
+.rhythmBlock {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+
+.rhythmHeader {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.rhythmBadge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.rhythm_sinus_rhythm {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.rhythm_sinus_bradycardia {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.rhythm_sinus_tachycardia {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.rhythm_irregular {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.rhythm_insufficient_data {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.rhythmRegular {
+    font-size: 0.75rem;
+    color: #475569;
+}
+
+.rhythmDesc {
+    font-size: 0.8rem;
+    color: #334155;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.interpretList {
+    margin: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.interpretOk {
+    color: #166534;
+    font-size: 0.78rem;
+}
+
+.interpretWarn {
+    color: #92400e;
+    font-size: 0.78rem;
+}
+
+.interpretWarn::before {
+    content: '⚠ ';
+}
+
+/* ─── Disclaimer ─────────────────────────────────── */
+.disclaimer {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+
+.disclaimerTitle {
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #92400e;
+    margin-bottom: 8px;
+}
+
+.disclaimerList {
+    margin: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.disclaimerList li {
+    font-size: 0.75rem;
+    color: #78350f;
+    line-height: 1.5;
+}
+
+.reportFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 0.68rem;
+    color: #a16207;
+    border-top: 1px solid #fcd34d;
+    padding-top: 8px;
+}
+
+/* ─── Print Media ─────────────────────────────────── */
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm 14mm;
+    }
+
+    /* Hide everything on the page */
+    body>* {
+        display: none !important;
+    }
+
+    /* Show ONLY the report root */
+    #ecg-print-root,
+    #ecg-print-root * {
+        display: revert !important;
+        visibility: visible !important;
+    }
+
+    #ecg-print-root {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white !important;
+        padding: 0 !important;
+        font-size: 0.78rem;
+    }
+
+    .toolbar {
+        display: none !important;
+    }
+
+    .overlay {
+        display: none !important;
+    }
+
+    .modal {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .ecgCanvas {
+        max-width: 100% !important;
+        width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    .metricsTable {
+        page-break-inside: avoid;
+    }
+
+    .rhythmBlock {
+        page-break-inside: avoid;
+    }
+
+    .disclaimer {
+        page-break-inside: avoid;
+    }
+}

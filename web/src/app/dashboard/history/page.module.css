@@ -1,8 +1,32 @@
+/* history/page.module.css */
+
 .content {
     padding: var(--space-6);
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
+}
+
+/* ─── Top Bar ─────────────────────────────────── */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.pageTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.pageSubtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 2px 0 0;
 }
 
 .rangeBar {
@@ -12,16 +36,15 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 4px;
-    width: fit-content;
 }
 
 .rangeBtn {
-    padding: var(--space-2) var(--space-5);
+    padding: 6px 14px;
     background: transparent;
     border: none;
     color: var(--text-muted);
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.78rem;
+    font-weight: 600;
     cursor: pointer;
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
@@ -32,83 +55,65 @@
 }
 
 .rangeActive {
-    background: var(--accent-blue);
-    color: white;
+    background: var(--accent-blue) !important;
+    color: white !important;
+}
+
+/* ─── Trend Charts Grid ─────────────────────────────────── */
+.trendGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+@media (max-width: 900px) {
+    .trendGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .chartCard {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: var(--space-5);
+    padding: var(--space-4) var(--space-5);
 }
 
-.chartCard h4 {
-    font-size: 0.9rem;
+.chartCardHead {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
     margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .chartWrap {
-    height: 220px;
+    height: 160px;
 }
 
-.zones {
-    display: flex;
-    gap: var(--space-6);
-    font-size: 0.7rem;
-    margin-bottom: var(--space-3);
+/* ─── Color helpers ─────────────────────────────────── */
+.iconRed {
+    color: #ef4444;
 }
 
-.calendarGrid {
-    display: flex;
-    gap: 3px;
-    padding: var(--space-4) 0;
+.iconBlue {
+    color: #3b82f6;
 }
 
-.calWeek {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+.iconPurple {
+    color: #a855f7;
 }
 
-.calDay {
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-}
-
-.weeklySummaries {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-}
-
-.weekCard {
-    padding: var(--space-3) var(--space-4);
-    background: var(--bg-elevated);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-}
-
-.weekCard strong {
-    font-size: 0.8rem;
-}
-
-.weekStats {
-    display: flex;
-    gap: var(--space-4);
-    margin-top: var(--space-2);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    flex-wrap: wrap;
-}
-
+/* ─── Table Card ─────────────────────────────────── */
 .tableCard {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
-    overflow-x: auto;
 }
 
 .tableHeader {
@@ -118,40 +123,217 @@
     margin-bottom: var(--space-4);
 }
 
-.tableHeader h4 {
-    font-size: 0.9rem;
+.tableHLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+.tableHLeft h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.tableCount {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+
+.tableWrap {
+    overflow-x: auto;
+}
+
+/* ─── Table ─────────────────────────────────── */
 .table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    min-width: 700px;
 }
 
 .table th {
     text-align: left;
-    padding: var(--space-3) var(--space-4);
+    padding: 10px 12px;
     border-bottom: 1px solid var(--border);
     color: var(--text-muted);
-    font-weight: 500;
-    font-size: 0.75rem;
+    font-weight: 600;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.table td {
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--border);
-    color: var(--text-secondary);
-}
-
-.table tr:hover td {
+    letter-spacing: 0.06em;
+    white-space: nowrap;
     background: var(--bg-elevated);
 }
 
-.pagination {
-    text-align: center;
-    padding: var(--space-4) 0 0;
-    font-size: 0.8rem;
+.table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover td {
+    background: var(--bg-elevated);
+}
+
+.tdIdx {
     color: var(--text-muted);
+    font-size: 0.72rem;
+    width: 30px;
+}
+
+.tdMono {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--text-primary);
+}
+
+/* ─── Date Cell ─────────────────────────────────── */
+.dateCell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.datePrimary {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+.dateSecondary {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+/* ─── Vital Stats ─────────────────────────────────── */
+.vitStat {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.vitUnit {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+/* ─── Burnout Bar ─────────────────────────────────── */
+.burnoutBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.burnoutFill {
+    height: 6px;
+    border-radius: 3px;
+    min-width: 4px;
+    max-width: 80px;
+    transition: width 0.4s ease;
+}
+
+.burnoutLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 28px;
+}
+
+/* ─── Badges ─────────────────────────────────── */
+.badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-green {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.badge-yellow {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.badge-red {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+/* ─── Report Button ─────────────────────────────────── */
+.reportBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-sm);
+    color: #3b82f6;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.reportBtn:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.reportBtnDisabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ─── Empty State ─────────────────────────────────── */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 12px;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 2rem;
+    display: block;
+    background: var(--bg-elevated);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    line-height: 64px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.emptyState h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.emptyState p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    max-width: 380px;
+    margin: 0;
 }

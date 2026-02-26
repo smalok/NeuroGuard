@@ -54,6 +54,8 @@ export interface SessionData {
     avgHRV: number;
     burnoutScore: number;
     classification: 'normal' | 'high_stress' | 'burnout_risk';
+    rawECG?: number[];          // New: Store raw data for detailed analysis
+    rawEMG?: number[];          // New: Store raw data for detailed analysis
 }
 
 export interface DailyTrend {
@@ -101,6 +103,13 @@ export interface Report {
     type: 'daily' | 'weekly' | 'full';
     generatedOn: Date;
     status: 'ready' | 'generating';
+    dataSnapshot?: {
+        avgHR: number;
+        avgHRV: number;
+        burnoutScore: number;
+        ecgSample?: number[];
+        emgSample?: number[];
+    };
 }
 
 export interface AlertRule {
