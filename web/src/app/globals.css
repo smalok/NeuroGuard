@@ -1,8 +1,19 @@
+@import "tailwindcss";
+
 /* =============================================
    NeuroGuard System — Global Design System
    ============================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Custom font utilities for Tailwind */
+.font-heading {
+  font-family: var(--font-heading), 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
 
 :root {
   /* Background */
@@ -378,105 +389,50 @@ a:hover {
   background: var(--text-muted);
 }
 
-/* Grid helpers */
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-}
+/* Grid helpers — wrapped in @layer so Tailwind utilities take precedence */
+@layer components {
+  .ng-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-}
+  .ng-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
-}
+  .ng-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
 
-.grid-6 {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-4);
+  .ng-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-4);
+  }
 }
 
 @media (max-width: 1024px) {
 
-  .grid-3,
-  .grid-4,
-  .grid-6 {
+  .ng-grid-3,
+  .ng-grid-4,
+  .ng-grid-6 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
 
-  .grid-2,
-  .grid-3,
-  .grid-4,
-  .grid-6 {
+  .ng-grid-2,
+  .ng-grid-3,
+  .ng-grid-4,
+  .ng-grid-6 {
     grid-template-columns: 1fr;
   }
-}
-
-/* Flex helpers */
-.flex {
-  display: flex;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.gap-2 {
-  gap: var(--space-2);
-}
-
-.gap-3 {
-  gap: var(--space-3);
-}
-
-.gap-4 {
-  gap: var(--space-4);
-}
-
-/* Spacing helpers */
-.mb-4 {
-  margin-bottom: var(--space-4);
-}
-
-.mb-6 {
-  margin-bottom: var(--space-6);
-}
-
-.mt-4 {
-  margin-top: var(--space-4);
-}
-
-.py-4 {
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
-}
-
-/* Text helpers */
-.text-center {
-  text-align: center;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-}
-
-/* Grid span helpers */
-.col-span-2 {
-  grid-column: span 2;
 }
 
 /* Ghost button */
