@@ -22,8 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "NeuroGuard System — AI-Powered Burnout Detection",
   description:
-    "Real-time ECG & EMG biosignal analysis powered by machine learning. Monitor stress, track fatigue, and receive early warnings.",
-  keywords: "burnout detection, ECG, EMG, biosignals, machine learning, health monitoring, HRV",
+    "Real-time ECG & EEG biosignal analysis powered by machine learning. Monitor stress, track fatigue, and receive early warnings.",
+  keywords: "burnout detection, ECG, EEG, biosignals, machine learning, health monitoring, HRV",
 };
 
 export default function RootLayout({

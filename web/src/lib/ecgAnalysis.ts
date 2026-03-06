@@ -2,9 +2,9 @@
  * NeuroGuard — ECG Signal Analysis Library
  * ==========================================
  * Clinical-grade signal processing for single-lead (Lead I) ECG
- * from a 3-electrode setup (RA, LA, RL-ground) via AD8232 + Arduino Uno.
+ * from a 3-electrode setup (RA, LA, RL-ground) via AD8232 + ESP8266.
  *
- * Signal chain: AD8232 → Arduino A4 (10-bit ADC, 0-1023) → Serial → Web
+ * Signal chain: AD8232 → ESP8266 ADC (10-bit, 0-1023) → WiFi → Web
  * Sample rate: ~100 Hz (10ms interval)
  */
 

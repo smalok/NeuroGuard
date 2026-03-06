@@ -1,182 +1,902 @@
 [
-    {
-        "hr": 65,
-        "hrv": 55,
-        "rmssd": 42,
-        "sdnn": 52,
-        "lf_hf": 1.2,
-        "emg_rms": 12,
-        "label": 0
-    },
-    {
-        "hr": 72,
-        "hrv": 60,
-        "rmssd": 45,
-        "sdnn": 58,
-        "lf_hf": 1.1,
-        "emg_rms": 15,
-        "label": 0
-    },
-    {
-        "hr": 68,
-        "hrv": 52,
-        "rmssd": 38,
-        "sdnn": 48,
-        "lf_hf": 1.3,
-        "emg_rms": 10,
-        "label": 0
-    },
-    {
-        "hr": 70,
-        "hrv": 58,
-        "rmssd": 44,
-        "sdnn": 55,
-        "lf_hf": 0.9,
-        "emg_rms": 14,
-        "label": 0
-    },
-    {
-        "hr": 62,
-        "hrv": 65,
-        "rmssd": 50,
-        "sdnn": 62,
-        "lf_hf": 0.8,
-        "emg_rms": 11,
-        "label": 0
-    },
-    {
-        "hr": 75,
-        "hrv": 48,
-        "rmssd": 35,
-        "sdnn": 45,
-        "lf_hf": 1.4,
-        "emg_rms": 18,
-        "label": 0
-    },
-    {
-        "hr": 82,
-        "hrv": 45,
-        "rmssd": 32,
-        "sdnn": 40,
-        "lf_hf": 1.5,
-        "emg_rms": 20,
-        "label": 0
-    },
-    {
-        "hr": 95,
-        "hrv": 25,
-        "rmssd": 18,
-        "sdnn": 22,
-        "lf_hf": 2.5,
-        "emg_rms": 45,
-        "label": 1
-    },
-    {
-        "hr": 102,
-        "hrv": 20,
-        "rmssd": 15,
-        "sdnn": 18,
-        "lf_hf": 3.2,
-        "emg_rms": 55,
-        "label": 1
-    },
-    {
-        "hr": 98,
-        "hrv": 22,
-        "rmssd": 16,
-        "sdnn": 20,
-        "lf_hf": 2.8,
-        "emg_rms": 48,
-        "label": 1
-    },
-    {
-        "hr": 110,
-        "hrv": 15,
-        "rmssd": 12,
-        "sdnn": 15,
-        "lf_hf": 3.5,
-        "emg_rms": 60,
-        "label": 1
-    },
-    {
-        "hr": 92,
-        "hrv": 28,
-        "rmssd": 20,
-        "sdnn": 25,
-        "lf_hf": 2.2,
-        "emg_rms": 35,
-        "label": 1
-    },
-    {
-        "hr": 66,
-        "hrv": 53,
-        "rmssd": 40,
-        "sdnn": 50,
-        "lf_hf": 1.1,
-        "emg_rms": 13,
-        "label": 0
-    },
-    {
-        "hr": 71,
-        "hrv": 59,
-        "rmssd": 46,
-        "sdnn": 56,
-        "lf_hf": 1.0,
-        "emg_rms": 14,
-        "label": 0
-    },
-    {
-        "hr": 105,
-        "hrv": 18,
-        "rmssd": 14,
-        "sdnn": 16,
-        "lf_hf": 3.0,
-        "emg_rms": 52,
-        "label": 1
-    },
-    {
-        "hr": 88,
-        "hrv": 30,
-        "rmssd": 22,
-        "sdnn": 28,
-        "lf_hf": 2.0,
-        "emg_rms": 30,
-        "label": 1
-    },
-    {
-        "hr": 64,
-        "hrv": 62,
-        "rmssd": 48,
-        "sdnn": 60,
-        "lf_hf": 0.85,
-        "emg_rms": 11,
-        "label": 0
-    },
-    {
-        "hr": 115,
-        "hrv": 12,
-        "rmssd": 10,
-        "sdnn": 12,
-        "lf_hf": 4.0,
-        "emg_rms": 65,
-        "label": 1
-    },
-    {
-        "hr": 78,
-        "hrv": 42,
-        "rmssd": 30,
-        "sdnn": 38,
-        "lf_hf": 1.6,
-        "emg_rms": 22,
-        "label": 0
-    },
-    {
-        "hr": 96,
-        "hrv": 24,
-        "rmssd": 17,
-        "sdnn": 21,
-        "lf_hf": 2.6,
-        "emg_rms": 40,
-        "label": 1
-    }
+  {
+    "hr": 88.7,
+    "hrv": 79,
+    "rmssd": 52,
+    "sdnn": 58.1,
+    "lf_hf": 0.77,
+    "eeg_alpha": 35.3,
+    "label": 0
+  },
+  {
+    "hr": 61,
+    "hrv": 75.9,
+    "rmssd": 65.8,
+    "sdnn": 78.8,
+    "lf_hf": 0.86,
+    "eeg_alpha": 45.2,
+    "label": 0
+  },
+  {
+    "hr": 61.5,
+    "hrv": 61.1,
+    "rmssd": 39.8,
+    "sdnn": 54.7,
+    "lf_hf": 0.71,
+    "eeg_alpha": 48.2,
+    "label": 0
+  },
+  {
+    "hr": 72.7,
+    "hrv": 46.6,
+    "rmssd": 59.6,
+    "sdnn": 63,
+    "lf_hf": 1.26,
+    "eeg_alpha": 54.5,
+    "label": 0
+  },
+  {
+    "hr": 79.6,
+    "hrv": 58.3,
+    "rmssd": 46.8,
+    "sdnn": 64.1,
+    "lf_hf": 0.91,
+    "eeg_alpha": 67.6,
+    "label": 0
+  },
+  {
+    "hr": 77.3,
+    "hrv": 41.7,
+    "rmssd": 36,
+    "sdnn": 45.9,
+    "lf_hf": 1.93,
+    "eeg_alpha": 47.2,
+    "label": 0
+  },
+  {
+    "hr": 80.7,
+    "hrv": 67.6,
+    "rmssd": 60.5,
+    "sdnn": 57.4,
+    "lf_hf": 1.71,
+    "eeg_alpha": 64.5,
+    "label": 0
+  },
+  {
+    "hr": 85.2,
+    "hrv": 65,
+    "rmssd": 62.2,
+    "sdnn": 68.9,
+    "lf_hf": 1.07,
+    "eeg_alpha": 50.1,
+    "label": 0
+  },
+  {
+    "hr": 65.8,
+    "hrv": 77.4,
+    "rmssd": 60.8,
+    "sdnn": 77.7,
+    "lf_hf": 1.37,
+    "eeg_alpha": 52.9,
+    "label": 0
+  },
+  {
+    "hr": 78.6,
+    "hrv": 70.1,
+    "rmssd": 43.2,
+    "sdnn": 70.8,
+    "lf_hf": 0.54,
+    "eeg_alpha": 62,
+    "label": 0
+  },
+  {
+    "hr": 80.1,
+    "hrv": 58.5,
+    "rmssd": 50.4,
+    "sdnn": 58.7,
+    "lf_hf": 1.38,
+    "eeg_alpha": 64.1,
+    "label": 0
+  },
+  {
+    "hr": 75.4,
+    "hrv": 43.5,
+    "rmssd": 48.2,
+    "sdnn": 73,
+    "lf_hf": 0.98,
+    "eeg_alpha": 32.7,
+    "label": 0
+  },
+  {
+    "hr": 70.1,
+    "hrv": 68.4,
+    "rmssd": 56.7,
+    "sdnn": 66.7,
+    "lf_hf": 1.21,
+    "eeg_alpha": 66.2,
+    "label": 0
+  },
+  {
+    "hr": 88.5,
+    "hrv": 57.3,
+    "rmssd": 58.6,
+    "sdnn": 76.1,
+    "lf_hf": 1.71,
+    "eeg_alpha": 30.1,
+    "label": 0
+  },
+  {
+    "hr": 64.6,
+    "hrv": 52,
+    "rmssd": 48.9,
+    "sdnn": 52.7,
+    "lf_hf": 0.5,
+    "eeg_alpha": 49.5,
+    "label": 0
+  },
+  {
+    "hr": 85.3,
+    "hrv": 72.4,
+    "rmssd": 42.7,
+    "sdnn": 75.4,
+    "lf_hf": 0.6,
+    "eeg_alpha": 48.2,
+    "label": 0
+  },
+  {
+    "hr": 86.2,
+    "hrv": 42.3,
+    "rmssd": 55.6,
+    "sdnn": 67.7,
+    "lf_hf": 1.49,
+    "eeg_alpha": 49.4,
+    "label": 0
+  },
+  {
+    "hr": 68.5,
+    "hrv": 40.1,
+    "rmssd": 67.9,
+    "sdnn": 40.7,
+    "lf_hf": 0.51,
+    "eeg_alpha": 44.9,
+    "label": 0
+  },
+  {
+    "hr": 60.5,
+    "hrv": 64.5,
+    "rmssd": 68.4,
+    "sdnn": 57.9,
+    "lf_hf": 0.52,
+    "eeg_alpha": 36.2,
+    "label": 0
+  },
+  {
+    "hr": 70.9,
+    "hrv": 78.7,
+    "rmssd": 42.1,
+    "sdnn": 74.1,
+    "lf_hf": 1.81,
+    "eeg_alpha": 54,
+    "label": 0
+  },
+  {
+    "hr": 61.1,
+    "hrv": 54.4,
+    "rmssd": 47.4,
+    "sdnn": 68.2,
+    "lf_hf": 1.22,
+    "eeg_alpha": 39.8,
+    "label": 0
+  },
+  {
+    "hr": 86,
+    "hrv": 41.9,
+    "rmssd": 64.3,
+    "sdnn": 69.9,
+    "lf_hf": 1.57,
+    "eeg_alpha": 61.6,
+    "label": 0
+  },
+  {
+    "hr": 60.7,
+    "hrv": 52.3,
+    "rmssd": 53.4,
+    "sdnn": 68.9,
+    "lf_hf": 0.76,
+    "eeg_alpha": 31.7,
+    "label": 0
+  },
+  {
+    "hr": 77.4,
+    "hrv": 42.8,
+    "rmssd": 45.3,
+    "sdnn": 43.7,
+    "lf_hf": 1.82,
+    "eeg_alpha": 65.5,
+    "label": 0
+  },
+  {
+    "hr": 72.4,
+    "hrv": 61.9,
+    "rmssd": 54.4,
+    "sdnn": 55.7,
+    "lf_hf": 0.56,
+    "eeg_alpha": 48.2,
+    "label": 0
+  },
+  {
+    "hr": 70.7,
+    "hrv": 76.5,
+    "rmssd": 41.9,
+    "sdnn": 51.5,
+    "lf_hf": 1.28,
+    "eeg_alpha": 42.7,
+    "label": 0
+  },
+  {
+    "hr": 76.8,
+    "hrv": 58.5,
+    "rmssd": 52.2,
+    "sdnn": 70.5,
+    "lf_hf": 0.65,
+    "eeg_alpha": 53.5,
+    "label": 0
+  },
+  {
+    "hr": 65.9,
+    "hrv": 52.7,
+    "rmssd": 46.3,
+    "sdnn": 66.2,
+    "lf_hf": 1.81,
+    "eeg_alpha": 34,
+    "label": 0
+  },
+  {
+    "hr": 65.8,
+    "hrv": 68.7,
+    "rmssd": 43.3,
+    "sdnn": 54.7,
+    "lf_hf": 0.51,
+    "eeg_alpha": 39.1,
+    "label": 0
+  },
+  {
+    "hr": 63.7,
+    "hrv": 70.8,
+    "rmssd": 39.7,
+    "sdnn": 69.7,
+    "lf_hf": 0.52,
+    "eeg_alpha": 43.3,
+    "label": 0
+  },
+  {
+    "hr": 86,
+    "hrv": 63.3,
+    "rmssd": 45.7,
+    "sdnn": 45.8,
+    "lf_hf": 1.49,
+    "eeg_alpha": 61.2,
+    "label": 0
+  },
+  {
+    "hr": 85.7,
+    "hrv": 76.9,
+    "rmssd": 62.8,
+    "sdnn": 47.3,
+    "lf_hf": 1.22,
+    "eeg_alpha": 54,
+    "label": 0
+  },
+  {
+    "hr": 76.2,
+    "hrv": 74.4,
+    "rmssd": 59.5,
+    "sdnn": 45,
+    "lf_hf": 1.78,
+    "eeg_alpha": 47.7,
+    "label": 0
+  },
+  {
+    "hr": 83.6,
+    "hrv": 49.7,
+    "rmssd": 58.9,
+    "sdnn": 73.2,
+    "lf_hf": 1.32,
+    "eeg_alpha": 34.4,
+    "label": 0
+  },
+  {
+    "hr": 61.1,
+    "hrv": 47.5,
+    "rmssd": 65.5,
+    "sdnn": 43.3,
+    "lf_hf": 0.56,
+    "eeg_alpha": 40.8,
+    "label": 0
+  },
+  {
+    "hr": 61.1,
+    "hrv": 48.4,
+    "rmssd": 44.3,
+    "sdnn": 61.4,
+    "lf_hf": 0.52,
+    "eeg_alpha": 56.1,
+    "label": 0
+  },
+  {
+    "hr": 72.9,
+    "hrv": 58.8,
+    "rmssd": 40.6,
+    "sdnn": 72.5,
+    "lf_hf": 0.61,
+    "eeg_alpha": 51.8,
+    "label": 0
+  },
+  {
+    "hr": 84.4,
+    "hrv": 79.3,
+    "rmssd": 58.4,
+    "sdnn": 43.7,
+    "lf_hf": 0.71,
+    "eeg_alpha": 53.3,
+    "label": 0
+  },
+  {
+    "hr": 85.1,
+    "hrv": 54.1,
+    "rmssd": 47.8,
+    "sdnn": 50,
+    "lf_hf": 1.06,
+    "eeg_alpha": 51.9,
+    "label": 0
+  },
+  {
+    "hr": 64.7,
+    "hrv": 72.5,
+    "rmssd": 44.6,
+    "sdnn": 48.4,
+    "lf_hf": 0.95,
+    "eeg_alpha": 61.8,
+    "label": 0
+  },
+  {
+    "hr": 67.8,
+    "hrv": 56.2,
+    "rmssd": 51,
+    "sdnn": 62,
+    "lf_hf": 1.99,
+    "eeg_alpha": 51.2,
+    "label": 0
+  },
+  {
+    "hr": 87.6,
+    "hrv": 73.5,
+    "rmssd": 65,
+    "sdnn": 59,
+    "lf_hf": 1.04,
+    "eeg_alpha": 68.7,
+    "label": 0
+  },
+  {
+    "hr": 81.7,
+    "hrv": 78.8,
+    "rmssd": 39.8,
+    "sdnn": 46.9,
+    "lf_hf": 1.45,
+    "eeg_alpha": 60.2,
+    "label": 0
+  },
+  {
+    "hr": 67.8,
+    "hrv": 72.8,
+    "rmssd": 46,
+    "sdnn": 43.9,
+    "lf_hf": 0.64,
+    "eeg_alpha": 46.4,
+    "label": 0
+  },
+  {
+    "hr": 65.9,
+    "hrv": 71.9,
+    "rmssd": 59.8,
+    "sdnn": 43.1,
+    "lf_hf": 1.19,
+    "eeg_alpha": 60.3,
+    "label": 0
+  },
+  {
+    "hr": 70.9,
+    "hrv": 58.6,
+    "rmssd": 50.6,
+    "sdnn": 67.9,
+    "lf_hf": 1.84,
+    "eeg_alpha": 48.1,
+    "label": 0
+  },
+  {
+    "hr": 64.7,
+    "hrv": 48.1,
+    "rmssd": 39.6,
+    "sdnn": 51.4,
+    "lf_hf": 0.53,
+    "eeg_alpha": 60.6,
+    "label": 0
+  },
+  {
+    "hr": 73.6,
+    "hrv": 78.1,
+    "rmssd": 65.6,
+    "sdnn": 78.8,
+    "lf_hf": 1.59,
+    "eeg_alpha": 52.5,
+    "label": 0
+  },
+  {
+    "hr": 86.1,
+    "hrv": 43,
+    "rmssd": 47.1,
+    "sdnn": 69.1,
+    "lf_hf": 1.32,
+    "eeg_alpha": 69.7,
+    "label": 0
+  },
+  {
+    "hr": 67.8,
+    "hrv": 69.5,
+    "rmssd": 64.1,
+    "sdnn": 53,
+    "lf_hf": 0.99,
+    "eeg_alpha": 61.3,
+    "label": 0
+  },
+  {
+    "hr": 102.3,
+    "hrv": 17.3,
+    "rmssd": 13.8,
+    "sdnn": 18.4,
+    "lf_hf": 4.38,
+    "eeg_alpha": 16.3,
+    "label": 1
+  },
+  {
+    "hr": 102.1,
+    "hrv": 27.3,
+    "rmssd": 12.1,
+    "sdnn": 28.6,
+    "lf_hf": 5.12,
+    "eeg_alpha": 10,
+    "label": 1
+  },
+  {
+    "hr": 125.8,
+    "hrv": 27,
+    "rmssd": 21.4,
+    "sdnn": 28.7,
+    "lf_hf": 4.05,
+    "eeg_alpha": 5.9,
+    "label": 1
+  },
+  {
+    "hr": 127.8,
+    "hrv": 19.4,
+    "rmssd": 28,
+    "sdnn": 12.2,
+    "lf_hf": 4.81,
+    "eeg_alpha": 15.9,
+    "label": 1
+  },
+  {
+    "hr": 101.8,
+    "hrv": 19.3,
+    "rmssd": 21.9,
+    "sdnn": 11.1,
+    "lf_hf": 5.15,
+    "eeg_alpha": 8.9,
+    "label": 1
+  },
+  {
+    "hr": 90.1,
+    "hrv": 11.3,
+    "rmssd": 22.2,
+    "sdnn": 23.3,
+    "lf_hf": 4.36,
+    "eeg_alpha": 11.4,
+    "label": 1
+  },
+  {
+    "hr": 95.3,
+    "hrv": 21.4,
+    "rmssd": 18.4,
+    "sdnn": 25.4,
+    "lf_hf": 5.18,
+    "eeg_alpha": 22.3,
+    "label": 1
+  },
+  {
+    "hr": 111.2,
+    "hrv": 21,
+    "rmssd": 11.5,
+    "sdnn": 28.6,
+    "lf_hf": 5.31,
+    "eeg_alpha": 8,
+    "label": 1
+  },
+  {
+    "hr": 93,
+    "hrv": 17.8,
+    "rmssd": 17.5,
+    "sdnn": 18.4,
+    "lf_hf": 3.81,
+    "eeg_alpha": 13.1,
+    "label": 1
+  },
+  {
+    "hr": 127,
+    "hrv": 10.4,
+    "rmssd": 24.7,
+    "sdnn": 14,
+    "lf_hf": 2.57,
+    "eeg_alpha": 8.9,
+    "label": 1
+  },
+  {
+    "hr": 113.8,
+    "hrv": 11.5,
+    "rmssd": 12.1,
+    "sdnn": 25,
+    "lf_hf": 4.84,
+    "eeg_alpha": 15,
+    "label": 1
+  },
+  {
+    "hr": 127.4,
+    "hrv": 18.9,
+    "rmssd": 11.6,
+    "sdnn": 26.1,
+    "lf_hf": 5.4,
+    "eeg_alpha": 6.4,
+    "label": 1
+  },
+  {
+    "hr": 120.4,
+    "hrv": 23.8,
+    "rmssd": 11.5,
+    "sdnn": 13.2,
+    "lf_hf": 3.07,
+    "eeg_alpha": 11.2,
+    "label": 1
+  },
+  {
+    "hr": 122.1,
+    "hrv": 13,
+    "rmssd": 14.7,
+    "sdnn": 14.2,
+    "lf_hf": 5.25,
+    "eeg_alpha": 20.8,
+    "label": 1
+  },
+  {
+    "hr": 107.6,
+    "hrv": 14,
+    "rmssd": 14.7,
+    "sdnn": 13.5,
+    "lf_hf": 3.95,
+    "eeg_alpha": 23.9,
+    "label": 1
+  },
+  {
+    "hr": 121.6,
+    "hrv": 12.2,
+    "rmssd": 18.3,
+    "sdnn": 24.2,
+    "lf_hf": 5.11,
+    "eeg_alpha": 6.1,
+    "label": 1
+  },
+  {
+    "hr": 112.1,
+    "hrv": 20.3,
+    "rmssd": 13.1,
+    "sdnn": 14.7,
+    "lf_hf": 5.16,
+    "eeg_alpha": 5.6,
+    "label": 1
+  },
+  {
+    "hr": 115.7,
+    "hrv": 29.3,
+    "rmssd": 19.9,
+    "sdnn": 28.2,
+    "lf_hf": 3.3,
+    "eeg_alpha": 13.4,
+    "label": 1
+  },
+  {
+    "hr": 118.7,
+    "hrv": 29.9,
+    "rmssd": 17.6,
+    "sdnn": 10.4,
+    "lf_hf": 4.01,
+    "eeg_alpha": 8.5,
+    "label": 1
+  },
+  {
+    "hr": 91.6,
+    "hrv": 17,
+    "rmssd": 25.1,
+    "sdnn": 13.9,
+    "lf_hf": 3.06,
+    "eeg_alpha": 8.8,
+    "label": 1
+  },
+  {
+    "hr": 106.7,
+    "hrv": 24.5,
+    "rmssd": 12.2,
+    "sdnn": 23.1,
+    "lf_hf": 2.54,
+    "eeg_alpha": 7.8,
+    "label": 1
+  },
+  {
+    "hr": 107.3,
+    "hrv": 11,
+    "rmssd": 8.9,
+    "sdnn": 17.6,
+    "lf_hf": 4.25,
+    "eeg_alpha": 5.6,
+    "label": 1
+  },
+  {
+    "hr": 116.2,
+    "hrv": 18.6,
+    "rmssd": 26.7,
+    "sdnn": 29.4,
+    "lf_hf": 5.35,
+    "eeg_alpha": 14.8,
+    "label": 1
+  },
+  {
+    "hr": 92.7,
+    "hrv": 22.5,
+    "rmssd": 27.1,
+    "sdnn": 11,
+    "lf_hf": 4.43,
+    "eeg_alpha": 24.1,
+    "label": 1
+  },
+  {
+    "hr": 124.1,
+    "hrv": 19.6,
+    "rmssd": 16.5,
+    "sdnn": 19.3,
+    "lf_hf": 3.02,
+    "eeg_alpha": 11.1,
+    "label": 1
+  },
+  {
+    "hr": 104.8,
+    "hrv": 17.1,
+    "rmssd": 13.9,
+    "sdnn": 23.8,
+    "lf_hf": 5,
+    "eeg_alpha": 5.6,
+    "label": 1
+  },
+  {
+    "hr": 116.5,
+    "hrv": 11,
+    "rmssd": 12.5,
+    "sdnn": 11.5,
+    "lf_hf": 4.05,
+    "eeg_alpha": 16.2,
+    "label": 1
+  },
+  {
+    "hr": 129,
+    "hrv": 10.7,
+    "rmssd": 15.4,
+    "sdnn": 20.8,
+    "lf_hf": 4.02,
+    "eeg_alpha": 13.7,
+    "label": 1
+  },
+  {
+    "hr": 101.9,
+    "hrv": 29.3,
+    "rmssd": 23.1,
+    "sdnn": 29.4,
+    "lf_hf": 4.16,
+    "eeg_alpha": 21.2,
+    "label": 1
+  },
+  {
+    "hr": 104.5,
+    "hrv": 17.2,
+    "rmssd": 8.6,
+    "sdnn": 12.9,
+    "lf_hf": 3.56,
+    "eeg_alpha": 7,
+    "label": 1
+  },
+  {
+    "hr": 101.1,
+    "hrv": 15,
+    "rmssd": 22.4,
+    "sdnn": 11.6,
+    "lf_hf": 3.7,
+    "eeg_alpha": 11.5,
+    "label": 1
+  },
+  {
+    "hr": 90.3,
+    "hrv": 15.7,
+    "rmssd": 16.1,
+    "sdnn": 10.1,
+    "lf_hf": 3.24,
+    "eeg_alpha": 9.6,
+    "label": 1
+  },
+  {
+    "hr": 112.9,
+    "hrv": 11.2,
+    "rmssd": 21.8,
+    "sdnn": 21.1,
+    "lf_hf": 5.27,
+    "eeg_alpha": 24,
+    "label": 1
+  },
+  {
+    "hr": 124,
+    "hrv": 13,
+    "rmssd": 11.6,
+    "sdnn": 15.8,
+    "lf_hf": 5.33,
+    "eeg_alpha": 16.4,
+    "label": 1
+  },
+  {
+    "hr": 118.9,
+    "hrv": 18.9,
+    "rmssd": 24.4,
+    "sdnn": 30,
+    "lf_hf": 2.96,
+    "eeg_alpha": 13.9,
+    "label": 1
+  },
+  {
+    "hr": 98.1,
+    "hrv": 16.7,
+    "rmssd": 10.4,
+    "sdnn": 19.1,
+    "lf_hf": 5.29,
+    "eeg_alpha": 15.2,
+    "label": 1
+  },
+  {
+    "hr": 110.9,
+    "hrv": 19.6,
+    "rmssd": 18.2,
+    "sdnn": 26.4,
+    "lf_hf": 2.64,
+    "eeg_alpha": 15.7,
+    "label": 1
+  },
+  {
+    "hr": 98.1,
+    "hrv": 30,
+    "rmssd": 10.4,
+    "sdnn": 21.1,
+    "lf_hf": 3.31,
+    "eeg_alpha": 18.7,
+    "label": 1
+  },
+  {
+    "hr": 109.7,
+    "hrv": 24.9,
+    "rmssd": 17.8,
+    "sdnn": 23.9,
+    "lf_hf": 4.06,
+    "eeg_alpha": 14.8,
+    "label": 1
+  },
+  {
+    "hr": 110.6,
+    "hrv": 19,
+    "rmssd": 9.3,
+    "sdnn": 26,
+    "lf_hf": 2.67,
+    "eeg_alpha": 6.5,
+    "label": 1
+  },
+  {
+    "hr": 95.4,
+    "hrv": 11.8,
+    "rmssd": 20.9,
+    "sdnn": 21.5,
+    "lf_hf": 4.74,
+    "eeg_alpha": 19.1,
+    "label": 1
+  },
+  {
+    "hr": 95.8,
+    "hrv": 28.7,
+    "rmssd": 26.5,
+    "sdnn": 17,
+    "lf_hf": 2.93,
+    "eeg_alpha": 14.6,
+    "label": 1
+  },
+  {
+    "hr": 127.2,
+    "hrv": 21.2,
+    "rmssd": 14.7,
+    "sdnn": 22.9,
+    "lf_hf": 2.95,
+    "eeg_alpha": 19.1,
+    "label": 1
+  },
+  {
+    "hr": 125.2,
+    "hrv": 22.6,
+    "rmssd": 18.6,
+    "sdnn": 18.3,
+    "lf_hf": 3.71,
+    "eeg_alpha": 14.5,
+    "label": 1
+  },
+  {
+    "hr": 92.1,
+    "hrv": 14.7,
+    "rmssd": 13,
+    "sdnn": 27.8,
+    "lf_hf": 3.55,
+    "eeg_alpha": 22.9,
+    "label": 1
+  },
+  {
+    "hr": 111,
+    "hrv": 25,
+    "rmssd": 27.8,
+    "sdnn": 19,
+    "lf_hf": 4.23,
+    "eeg_alpha": 14.9,
+    "label": 1
+  },
+  {
+    "hr": 129.8,
+    "hrv": 14.7,
+    "rmssd": 13.8,
+    "sdnn": 18.1,
+    "lf_hf": 4.16,
+    "eeg_alpha": 17.8,
+    "label": 1
+  },
+  {
+    "hr": 110.3,
+    "hrv": 17.8,
+    "rmssd": 11.1,
+    "sdnn": 26.3,
+    "lf_hf": 3.31,
+    "eeg_alpha": 23.7,
+    "label": 1
+  },
+  {
+    "hr": 111,
+    "hrv": 30,
+    "rmssd": 22.2,
+    "sdnn": 12.3,
+    "lf_hf": 5.28,
+    "eeg_alpha": 17,
+    "label": 1
+  },
+  {
+    "hr": 107.3,
+    "hrv": 13.8,
+    "rmssd": 26.1,
+    "sdnn": 15,
+    "lf_hf": 5.3,
+    "eeg_alpha": 12.9,
+    "label": 1
+  }
 ]

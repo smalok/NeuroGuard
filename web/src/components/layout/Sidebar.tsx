@@ -11,7 +11,7 @@ import styles from './Sidebar.module.css';
 const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
     { icon: Heart, label: 'ECG Monitor', href: '/dashboard/ecg' },
-    { icon: Zap, label: 'EMG Monitor', href: '/dashboard/emg' },
+    { icon: Brain, label: 'EEG Monitor', href: '/dashboard/eeg' },
     { icon: History, label: 'History', href: '/dashboard/history' },
     { icon: FileText, label: 'Reports', href: '/dashboard/reports' },
     { icon: Bell, label: 'Alerts', href: '/dashboard/alerts', badge: 3 },

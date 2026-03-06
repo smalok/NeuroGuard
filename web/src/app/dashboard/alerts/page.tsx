@@ -15,7 +15,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Le
 export default function AlertsPage() {
     const [alerts, setAlerts] = useState<Alert[] | null>(null);
     const [rules, setRules] = useState<AlertRule[] | null>(null);
-    const [thresholds, setThresholds] = useState({ hr: 100, hrv: 25, burnout: 70, emg: 70 });
+    const [thresholds, setThresholds] = useState({ hr: 100, hrv: 25, burnout: 70, eeg: 15 });
 
     useEffect(() => {
         setAlerts(generateAlerts(8));
@@ -27,7 +27,7 @@ export default function AlertsPage() {
     const criticalCount = alerts.filter(a => a.severity === 'critical').length;
 
     const severityBg = { critical: '#ef4444', warning: '#eab308', info: '#3b82f6', success: '#22c55e' };
-    const sourceColors = { ECG: 'badge-blue', EMG: 'badge-purple', ML: 'badge-green', System: 'badge-yellow', Device: 'badge-blue' };
+    const sourceColors = { ECG: 'badge-blue', EEG: 'badge-purple', ML: 'badge-green', System: 'badge-yellow', Device: 'badge-blue' };
 
     const donutData = { labels: ['Critical', 'Warning', 'Info', 'Success'], datasets: [{ data: [8, 15, 22, 5], backgroundColor: ['#ef4444', '#eab308', '#3b82f6', '#22c55e'], borderWidth: 0 }] };
     const donutOpts = { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' as const, labels: { color: '#94a3b8', padding: 16, usePointStyle: true } } }, cutout: '65%' };
@@ -88,7 +88,7 @@ export default function AlertsPage() {
                         <div className={styles.settingsCard}>
                             <h4>Alert Thresholds</h4>
                             {Object.entries(thresholds).map(([key, val]) => {
-                                const labels: Record<string, string> = { hr: 'Heart Rate (BPM)', hrv: 'HRV (ms)', burnout: 'Burnout Score (%)', emg: 'EMG Freq (Hz)' };
+                                const labels: Record<string, string> = { hr: 'Heart Rate (BPM)', hrv: 'HRV (ms)', burnout: 'Burnout Score (%)', eeg: 'EEG Alpha (µV²)' };
                                 return (
                                     <div key={key} className={styles.sliderRow}>
                                         <label>{labels[key]}: <strong className="mono">{val}</strong></label>

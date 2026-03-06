@@ -3,9 +3,15 @@ import { createContext, useContext, useState, useEffect, useRef, useCallback, Re
 import { serialService, SerialData } from '@/services/serialService';
 
 interface DeviceContextType {
-    isConnected: boolean;
+    isConnected: boolean;       // true if EITHER device is connected
+    ecgConnected: boolean;      // ECG ESP8266 connected
+    eegConnected: boolean;      // EEG ESP8266 connected
     isScanning: boolean;
-    connect: () => Promise<boolean>;
+    connectECG: () => Promise<boolean>;
+    connectEEG: () => Promise<boolean>;
+    connect: () => Promise<boolean>;  // legacy — connects ECG
+    disconnectECG: () => Promise<void>;
+    disconnectEEG: () => Promise<void>;
     disconnect: () => Promise<void>;
     startScanning: () => void;
     stopScanning: () => void;
@@ -15,77 +21,85 @@ interface DeviceContextType {
 const DeviceContext = createContext<DeviceContextType | undefined>(undefined);
 
 export function DeviceProvider({ children }: { children: ReactNode }) {
-    const [isConnected, setIsConnected] = useState(false);
+    const [ecgConnected, setEcgConnected] = useState(false);
+    const [eegConnected, setEegConnected] = useState(false);
     const [isScanning, setIsScanning] = useState(false);
     const [data, setData] = useState<SerialData | null>(null);
-    const isDisconnectingRef = useRef(false);
 
-    // Listen for unexpected disconnections (physical USB unplug or read errors)
+    const isConnected = ecgConnected || eegConnected;
+
+    // Listen for unexpected disconnections
     useEffect(() => {
-        const unsubDisconnect = serialService.onDisconnect(() => {
-            console.log('[DeviceContext] Device unexpectedly disconnected');
-            setIsConnected(false);
-            setIsScanning(false);
-            setData(null);
-            isDisconnectingRef.current = false;
+        const unsubDisconnect = serialService.onDisconnect((source) => {
+            console.log(`[DeviceContext] ${source} disconnected`);
+            if (source === 'ecg' || source === 'all') setEcgConnected(false);
+            if (source === 'eeg' || source === 'all') setEegConnected(false);
         });
-
         return () => { unsubDisconnect(); };
     }, []);
 
-    // Subscribe to data stream — use a ref for isScanning to avoid re-subscribing
+    // Subscribe to data stream
     const isScanningRef = useRef(isScanning);
     useEffect(() => { isScanningRef.current = isScanning; }, [isScanning]);
 
     useEffect(() => {
         const unsub = serialService.subscribe((d) => {
-            if (isScanningRef.current) {
-                setData(d);
-            }
+            if (isScanningRef.current) setData(d);
         });
         return unsub;
-    }, []); // Subscribe once on mount, never re-subscribe
+    }, []);
 
-    const connect = useCallback(async () => {
-        if (isDisconnectingRef.current) return false;
-        const result = await serialService.connect();
-        if (result.success) {
-            setIsConnected(true);
-            setData(null);
-            return true;
-        }
+    const connectECG = useCallback(async () => {
+        const result = await serialService.connectECG();
+        if (result.success) { setEcgConnected(true); return true; }
         return false;
     }, []);
 
-    const disconnect = useCallback(async () => {
-        if (isDisconnectingRef.current) return;
-        isDisconnectingRef.current = true;
+    const connectEEG = useCallback(async () => {
+        const result = await serialService.connectEEG();
+        if (result.success) { setEegConnected(true); return true; }
+        return false;
+    }, []);
 
-        // Update UI state immediately so pages don't hang
-        setIsConnected(false);
+    // Legacy connect — connects ECG by default
+    const connect = useCallback(async () => {
+        return connectECG();
+    }, [connectECG]);
+
+    const disconnectECG = useCallback(async () => {
+        setEcgConnected(false);
+        if (!eegConnected) { setIsScanning(false); setData(null); }
+        await serialService.disconnectECG();
+    }, [eegConnected]);
+
+    const disconnectEEG = useCallback(async () => {
+        setEegConnected(false);
+        if (!ecgConnected) { setIsScanning(false); setData(null); }
+        await serialService.disconnectEEG();
+    }, [ecgConnected]);
+
+    const disconnect = useCallback(async () => {
+        setEcgConnected(false);
+        setEegConnected(false);
         setIsScanning(false);
         setData(null);
-
-        try {
-            await serialService.disconnect();
-        } catch (e) {
-            console.warn('Disconnect error (safe to ignore):', e);
-        } finally {
-            isDisconnectingRef.current = false;
-        }
+        await serialService.disconnect();
     }, []);
 
     const startScanning = useCallback(() => setIsScanning(true), []);
-    const stopScanning = useCallback(() => {
-        setIsScanning(false);
-        setData(null);
-    }, []);
+    const stopScanning = useCallback(() => { setIsScanning(false); setData(null); }, []);
 
     return (
         <DeviceContext.Provider value={{
             isConnected,
+            ecgConnected,
+            eegConnected,
             isScanning,
+            connectECG,
+            connectEEG,
             connect,
+            disconnectECG,
+            disconnectEEG,
             disconnect,
             startScanning,
             stopScanning,

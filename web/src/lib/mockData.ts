@@ -20,12 +20,19 @@ export function generateECGPoint(t: number): number {
     return v;
 }
 
-// Generate realistic EMG signal
-export function generateEMGPoint(t: number): number {
-    const base = Math.sin(t * 2 * Math.PI * 50) * 20;
-    const burst = Math.sin(t * 0.5) > 0.3 ? Math.random() * 60 - 30 : 0;
-    const noise = (Math.random() - 0.5) * 15;
-    return base + burst + noise;
+// Generate realistic EEG signal (alpha rhythm ~10Hz + mixed frequencies)
+export function generateEEGPoint(t: number): number {
+    // Alpha waves (8-13 Hz) — dominant during relaxation
+    const alpha = Math.sin(t * 2 * Math.PI * 10) * 25;
+    // Beta waves (13-30 Hz) — dominant during focus/stress
+    const beta = Math.sin(t * 2 * Math.PI * 22) * 10;
+    // Theta waves (4-8 Hz) — drowsiness
+    const theta = Math.sin(t * 2 * Math.PI * 6) * 8;
+    // Delta waves (0.5-4 Hz) — deep sleep background
+    const delta = Math.sin(t * 2 * Math.PI * 2) * 5;
+    // Noise
+    const noise = (Math.random() - 0.5) * 12;
+    return alpha + beta + theta + delta + noise;
 }
 
 export function generateVitalStats(): VitalStats {
@@ -35,10 +42,10 @@ export function generateVitalStats(): VitalStats {
         rmssd: 32 + Math.floor(Math.random() * 15),
         sdnn: 45 + Math.floor(Math.random() * 18),
         lfHfRatio: +(1.2 + Math.random() * 1.2).toFixed(1),
-        emgRms: +(30 + Math.random() * 30).toFixed(1),
-        emgMedianFreq: 75 + Math.floor(Math.random() * 25),
-        emgMav: +(25 + Math.random() * 25).toFixed(1),
-        emgVariance: +(100 + Math.random() * 120).toFixed(1),
+        eegAlphaPower: +(20 + Math.random() * 30).toFixed(1),
+        eegBetaPower: +(10 + Math.random() * 15).toFixed(1),
+        eegThetaBetaRatio: +(1.5 + Math.random() * 2.0).toFixed(1),
+        eegSignalQuality: 70 + Math.floor(Math.random() * 25),
     };
 }
 
@@ -54,7 +61,7 @@ export function generateBurnoutPrediction(): BurnoutPrediction {
             { name: 'RMSSD', value: 38, contribution: 10 + Math.floor(Math.random() * 8) },
             { name: 'SDNN', value: 52, contribution: 8 + Math.floor(Math.random() * 7) },
             { name: 'LF/HF', value: 1.8, contribution: 18 + Math.floor(Math.random() * 12) },
-            { name: 'EMG RMS', value: 45.2, contribution: 14 + Math.floor(Math.random() * 8) },
+            { name: 'EEG Alpha', value: 32.5, contribution: 14 + Math.floor(Math.random() * 8) },
         ],
     };
 }
@@ -63,7 +70,7 @@ const alertMessages: { severity: Alert['severity']; message: string; source: Ale
     { severity: 'critical', message: 'Burnout score exceeded 75% threshold — immediate rest recommended', source: 'ML' },
     { severity: 'critical', message: 'Heart rate sustained above 110 BPM for 8 minutes', source: 'ECG' },
     { severity: 'warning', message: 'HRV dropped below 25ms — moderate stress detected', source: 'ECG' },
-    { severity: 'warning', message: 'EMG fatigue index declining — median frequency below 75Hz', source: 'EMG' },
+    { severity: 'warning', message: 'EEG alpha power declining — reduced relaxation state detected', source: 'EEG' },
     { severity: 'info', message: 'Recording session completed — 42 minutes', source: 'System' },
     { severity: 'success', message: 'Device reconnected successfully', source: 'Device' },
     { severity: 'warning', message: 'LF/HF ratio elevated above 2.5 for 10 minutes', source: 'ECG' },
@@ -83,14 +90,12 @@ export function generateAlerts(count = 6): Alert[] {
 
 /**
  * Generate a 1000-sample (10s at 100Hz) ADC ECG buffer for demo sessions.
- * Uses generateECGPoint() to produce realistic PQRST waveforms, then maps
- * the float mV values back to 10-bit ADC units (0-1023) as the device sends.
  */
 function generateRawECGBuffer(bpmOffset = 0): number[] {
     const hr = 72 + bpmOffset;
     const result: number[] = [];
     for (let i = 0; i < 1000; i++) {
-        const t = i / 100; // seconds
+        const t = i / 100;
         const period = 60 / hr;
         const phase = (t % period) / period;
         let v = 0;
@@ -100,7 +105,6 @@ function generateRawECGBuffer(bpmOffset = 0): number[] {
         else if (phase > 0.33 && phase < 0.36) v = -0.3 * Math.sin(((phase - 0.33) / 0.03) * Math.PI);
         else if (phase > 0.45 && phase < 0.6) v = 0.25 * Math.sin(((phase - 0.45) / 0.15) * Math.PI);
         v += (Math.random() - 0.5) * 0.03;
-        // Map mV back to 10-bit ADC: adc = (v / 1.5) * (1023/2) + 511
         const adc = Math.round((v / 1.5) * 511.5 + 511.5);
         result.push(Math.max(0, Math.min(1023, adc)));
     }
@@ -131,23 +135,25 @@ export function generateWeeklyTrends(): DailyTrend[] {
         avgHR: 68 + Math.floor(Math.random() * 12),
         avgHRV: 35 + Math.floor(Math.random() * 18),
         burnoutScore: 25 + Math.floor(Math.random() * 35),
-        emgFatigueIndex: 75 + Math.floor(Math.random() * 20),
+        eegFocusIndex: 55 + Math.floor(Math.random() * 35),
     }));
 }
 
 export function generateDeviceStatus(): DeviceStatus {
     return {
         connected: true,
-        deviceName: 'Arduino Uno R3',
-        serialPort: 'COM3',
+        deviceName: 'ESP8266 Dual Module',
+        serialPort: 'WebSocket',
         baudRate: 115200,
         firmwareVersion: 'v2.1.3',
         bioAmpVersion: 'EXG Pill v1.0',
         ecgQuality: 82 + Math.floor(Math.random() * 15),
-        emgQuality: 58 + Math.floor(Math.random() * 20),
+        eegQuality: 68 + Math.floor(Math.random() * 20),
         ecgSnr: +(16 + Math.random() * 5).toFixed(1),
-        emgSnr: +(11 + Math.random() * 4).toFixed(1),
+        eegSnr: +(13 + Math.random() * 4).toFixed(1),
         uptime: 8100,
+        ecgDeviceIp: '192.168.1.101',
+        eegDeviceIp: '192.168.1.102',
     };
 }
 
@@ -181,7 +187,7 @@ export function generateAlertRules(): AlertRule[] {
         { id: 'ar1', condition: 'HR > 100 BPM for more than 5 minutes', active: true },
         { id: 'ar2', condition: 'Burnout Score > 60% for 3 consecutive days', active: true },
         { id: 'ar3', condition: 'HRV drops 30% below baseline', active: false },
-        { id: 'ar4', condition: 'EMG Median Frequency < 70 Hz', active: true },
+        { id: 'ar4', condition: 'EEG Alpha Power < 15 µV²', active: true },
     ];
 }
 

@@ -94,7 +94,7 @@ export default function LandingPage() {
   const ctaRef = useRef<HTMLElement>(null);
 
   const features = [
-    { icon: Heart, title: 'ECG/EMG Monitoring', desc: 'Continuous heart rate variability and muscular tension tracking for a complete autonomic nervous system profile.', color: '#3b82f6' },
+    { icon: Heart, title: 'ECG/EEG Monitoring', desc: 'Continuous heart rate variability and brainwave tracking for a complete autonomic nervous system profile.', color: '#3b82f6' },
     { icon: Brain, title: 'Burnout Prediction', desc: 'AI algorithms predict exhaustion levels up to 48 hours before they become clinically significant.', color: '#a855f7' },
     { icon: Gauge, title: 'Stress Gauge', desc: 'Real-time visual dashboard showing current cortisol-surrogate metrics and cognitive load levels.', color: '#22c55e' },
     { icon: TrendingUp, title: 'Trend Analysis', desc: 'Weekly and monthly biological reports highlighting environmental triggers and recovery efficiency.', color: '#eab308' },
@@ -103,9 +103,9 @@ export default function LandingPage() {
   ];
 
   const pipeline = [
-    { label: 'Sensors', sub: 'Non-invasive ECG & EMG skin electrodes capture micro-voltages.', icon: Wifi },
-    { label: 'Capture', sub: 'BioAmp EXG technology amplifies and filters raw biological noise.', icon: Cpu },
-    { label: 'AI Analysis', sub: 'Random Forest models process HRV and muscle tension patterns.', icon: Brain },
+    { label: 'Sensors', sub: 'Non-invasive ECG & EEG skin electrodes capture micro-voltages.', icon: Wifi },
+    { label: 'Capture', sub: 'ESP8266 modules amplify and transmit raw biological signals via WiFi.', icon: Cpu },
+    { label: 'AI Analysis', sub: 'Random Forest models process HRV and brainwave patterns.', icon: Brain },
     { label: 'Alerts', sub: 'Predictive warnings sent before physiological fatigue manifests.', icon: Bell },
   ];
 
@@ -242,7 +242,7 @@ export default function LandingPage() {
               <br />It Hits.
             </h1>
             <p data-hero-sub style={s.heroP}>
-              NeuroGuard uses clinical-grade ECG & EMG sensors paired with advanced AI to predict fatigue and prevent mental exhaustion in high-performance environments.
+              NeuroGuard uses clinical-grade ECG & EEG sensors paired with advanced AI to predict fatigue and prevent mental exhaustion in high-performance environments.
             </p>
             <div data-hero-ctas style={s.heroCtas}>
               <Link href="/dashboard" style={s.btnPrimary}>Launch Dashboard <ArrowRight size={18} /></Link>

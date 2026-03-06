@@ -6,10 +6,10 @@ export interface ECGData {
     rPeak?: boolean;
 }
 
-export interface EMGData {
+export interface EEGData {
     timestamp: number;
     value: number;        // µV
-    envelope?: number;
+    channel?: string;     // electrode placement (e.g. Fp1, Fp2)
 }
 
 export interface VitalStats {
@@ -18,10 +18,10 @@ export interface VitalStats {
     rmssd: number;              // ms
     sdnn: number;               // ms
     lfHfRatio: number;          // ratio
-    emgRms: number;             // µV
-    emgMedianFreq: number;      // Hz
-    emgMav: number;             // µV
-    emgVariance: number;
+    eegAlphaPower: number;      // µV² (8-13 Hz)
+    eegBetaPower: number;       // µV² (13-30 Hz)
+    eegThetaBetaRatio: number;  // ratio (focus metric)
+    eegSignalQuality: number;   // 0-100
 }
 
 export interface BurnoutPrediction {
@@ -41,7 +41,7 @@ export interface Alert {
     id: string;
     severity: 'critical' | 'warning' | 'info' | 'success';
     message: string;
-    source: 'ECG' | 'EMG' | 'ML' | 'System' | 'Device';
+    source: 'ECG' | 'EEG' | 'ML' | 'System' | 'Device';
     timestamp: Date;
     read: boolean;
 }
@@ -54,8 +54,8 @@ export interface SessionData {
     avgHRV: number;
     burnoutScore: number;
     classification: 'normal' | 'high_stress' | 'burnout_risk';
-    rawECG?: number[];          // New: Store raw data for detailed analysis
-    rawEMG?: number[];          // New: Store raw data for detailed analysis
+    rawECG?: number[];
+    rawEEG?: number[];
 }
 
 export interface DailyTrend {
@@ -63,7 +63,7 @@ export interface DailyTrend {
     avgHR: number;
     avgHRV: number;
     burnoutScore: number;
-    emgFatigueIndex: number;
+    eegFocusIndex: number;
 }
 
 export interface DeviceStatus {
@@ -74,10 +74,12 @@ export interface DeviceStatus {
     firmwareVersion: string;
     bioAmpVersion: string;
     ecgQuality: number;        // 0-100
-    emgQuality: number;        // 0-100
+    eegQuality: number;        // 0-100
     ecgSnr: number;             // dB
-    emgSnr: number;             // dB
+    eegSnr: number;             // dB
     uptime: number;             // seconds
+    ecgDeviceIp?: string;
+    eegDeviceIp?: string;
 }
 
 export interface UserProfile {
@@ -108,7 +110,7 @@ export interface Report {
         avgHRV: number;
         burnoutScore: number;
         ecgSample?: number[];
-        emgSample?: number[];
+        eegSample?: number[];
     };
 }
 

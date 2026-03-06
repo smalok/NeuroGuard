@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Brain, Shield, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import styles from './page.module.css';
 
 
 export default function LoginPage() {
@@ -17,7 +18,7 @@ export default function LoginPage() {
                         <span className={styles.logoText}>NeuroGuard</span>
                     </div>
                     <h2 className={styles.leftTitle}>Monitor Your Health<br /><span className="text-gradient">In Real Time</span></h2>
-                    <p className={styles.leftSub}>AI-powered burnout detection using ECG & EMG biosignals with machine learning.</p>
+                    <p className={styles.leftSub}>AI-powered burnout detection using ECG & EEG biosignals with machine learning.</p>
                     <div className={styles.leftStats}>
                         <div><span>9+</span><small>Bio Features</small></div>
                         <div><span>Real-time</span><small>Monitoring</small></div>

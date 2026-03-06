@@ -28,7 +28,7 @@ export interface AppSettings {
         hr: number;
         hrv: number;
         burnout: number;
-        emg: number;
+        eeg: number;
     };
 }
 
@@ -57,14 +57,14 @@ const defaultSettings: AppSettings = {
     theme: 'dark',
     accentColor: '#3b82f6',
     notifications: { email: true, push: false, sound: false, dailySummary: true },
-    thresholds: { hr: 100, hrv: 25, burnout: 70, emg: 70 },
+    thresholds: { hr: 100, hrv: 25, burnout: 70, eeg: 15 },
 };
 
 const defaultRules: AlertRule[] = [
     { id: 'ar1', condition: 'HR > 100 BPM for more than 5 minutes', active: true },
     { id: 'ar2', condition: 'Burnout Score > 60% for 3 consecutive days', active: true },
     { id: 'ar3', condition: 'HRV drops 30% below baseline', active: false },
-    { id: 'ar4', condition: 'EMG Median Frequency < 70 Hz', active: true },
+    { id: 'ar4', condition: 'EEG Alpha Power < 15 µV²', active: true },
 ];
 
 // ─── Helpers ─────────────────────────────────────────────────────────

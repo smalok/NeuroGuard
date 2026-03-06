@@ -272,6 +272,22 @@
     color: #ef4444;
 }
 
+.badge-blue {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.badge-purple {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
 /* ─── Report Button ─────────────────────────────────── */
 .reportBtn {
     display: inline-flex;

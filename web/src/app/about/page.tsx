@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Brain, Shield, Heart, Zap, Cpu, ArrowRight, Github, Twitter, Mail, Activity, BarChart3 } from 'lucide-react';
+import styles from './page.module.css';
 
 
 export default function AboutPage() {
@@ -9,8 +10,8 @@ export default function AboutPage() {
     ];
 
     const techStack = [
-        { name: 'Arduino Uno R3', desc: 'Microcontroller for signal acquisition', icon: Cpu, color: '#eab308' },
-        { name: 'BioAmp EXG Pill', desc: 'Biopotential amplifier for ECG/EMG', icon: Activity, color: '#22c55e' },
+        { name: 'ESP8266 Dual Module', desc: 'WiFi-enabled microcontroller for signal transmission', icon: Cpu, color: '#eab308' },
+        { name: 'BioAmp EXG Pill', desc: 'Biopotential amplifier for ECG/EEG', icon: Activity, color: '#22c55e' },
         { name: 'Random Forest ML', desc: '3-class burnout classification model', icon: Brain, color: '#3b82f6' },
         { name: 'Next.js Dashboard', desc: 'Real-time monitoring web interface', icon: BarChart3, color: '#a855f7' },
     ];
@@ -29,7 +30,7 @@ export default function AboutPage() {
                 <span className={styles.heroBadge}>About NeuroGuard</span>
                 <h1 className={styles.heroTitle}>AI-Powered <span className="text-gradient">Burnout Detection</span> System</h1>
                 <p className={styles.heroSub}>
-                    NeuroGuard is a real-time health monitoring system that uses ECG and EMG biosignals
+                    NeuroGuard is a real-time health monitoring system that uses ECG and EEG biosignals
                     combined with machine learning to predict and prevent occupational burnout.
                 </p>
             </section>
@@ -72,7 +73,7 @@ export default function AboutPage() {
                 <div className={styles.featuresList}>
                     {[
                         { group: 'ECG Features', items: ['Heart Rate (HR)', 'RR Interval', 'RMSSD', 'SDNN', 'LF/HF Ratio'] },
-                        { group: 'EMG Features', items: ['RMS', 'Mean Absolute Value', 'Median Frequency', 'Variance'] },
+                        { group: 'EEG Features', items: ['Alpha Power', 'Beta Power', 'Theta/Beta Ratio', 'Signal Quality'] },
                         { group: 'Output Classes', items: ['Normal', 'High Stress', 'Burnout Risk'] },
                     ].map((g, i) => (
                         <div key={i} className={styles.featureGroup}>

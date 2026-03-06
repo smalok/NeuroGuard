@@ -7,6 +7,8 @@
     height: 100vh;
     transition: width 0.3s ease;
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
 }
 
 .sidebar.collapsed {
