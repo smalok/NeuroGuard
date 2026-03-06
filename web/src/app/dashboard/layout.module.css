@@ -1,17 +1,15 @@
 .layout {
     display: flex;
     min-height: 100vh;
+    background-color: #0a0e1a;
+    color: #f1f5f9;
 }
 
 .main {
     flex: 1;
-    margin-left: var(--sidebar-width);
-    transition: margin-left var(--transition-base);
-    min-height: 100vh;
-}
-
-@media (max-width: 768px) {
-    .main {
-        margin-left: 0;
-    }
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevents flex children from overflowing */
+    overflow-x: hidden;
 }

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Brain, Shield, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
-import styles from './page.module.css';
+
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);

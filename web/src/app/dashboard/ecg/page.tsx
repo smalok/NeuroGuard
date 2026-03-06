@@ -11,10 +11,11 @@ import {
     LineElement, BarElement, Filler, Tooltip, Legend,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import styles from './page.module.css';
+
 
 import { useDevice } from '@/context/DeviceContext';
 import { Play, Square } from 'lucide-react';
+import styles from './page.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Filler, Tooltip, Legend);
 
@@ -130,7 +131,7 @@ export default function ECGPage() {
                 </div>
 
                 {/* Vital Stats */}
-                <div className="grid-4">
+                <div className="ng-grid-4">
                     <StatCard title="Heart Rate" value={vitals.heartRate.toString()} unit="BPM" icon={Heart} color="var(--accent-red)" status={{ label: 'Normal', type: 'green' }} />
                     <StatCard title="HRV (RMSSD)" value={vitals.hrv.toString()} unit="ms" icon={Activity} color="var(--accent-blue)" status={{ label: 'Normal', type: 'green' }} />
                     <StatCard title="SDNN" value={vitals.sdnn.toString()} unit="ms" icon={BarChart3} color="var(--accent-purple)" status={{ label: 'Normal', type: 'green' }} />
@@ -138,7 +139,7 @@ export default function ECGPage() {
                 </div>
 
                 {/* Analysis Charts */}
-                <div className="grid-2">
+                <div className="ng-grid-2">
                     <div className={styles.chartCard} style={{ height: 300 }}>
                         <h4>R-R Interval Dist. (Poincaré Proxy)</h4>
                         <Line data={rrData} options={chartOpts} />

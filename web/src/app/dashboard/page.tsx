@@ -186,7 +186,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Main Grid */}
-                <div className="grid-3">
+                <div className="ng-grid-3">
                     {/* Burnout Gauge */}
                     <div className={styles.chartCard} style={{ gridColumn: 'span 1' }}>
                         <GaugeChart value={prediction.score} label="Burnout Risk" classification={prediction.classification} />
@@ -195,7 +195,7 @@ export default function DashboardPage() {
                         </div>
                     </div>
 
-                    <div className="grid-2 col-span-2">
+                    <div className="ng-grid-2 col-span-2">
                         <StatCard title="Heart Rate" value={vitals.heartRate.toString()} unit="BPM" icon={Activity} color="var(--accent-red)"
                             trend={{ value: '2', up: true }} status={{ label: vitals.heartRate > 100 ? 'Warning' : 'Normal', type: vitals.heartRate > 100 ? 'yellow' : 'green' }} />
                         <StatCard title="HRV (RMSSD)" value={vitals.hrv.toString()} unit="ms" icon={Activity} color="var(--accent-blue)"
@@ -208,7 +208,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Charts Row */}
-                <div className="grid-2">
+                <div className="ng-grid-2">
                     <div className={styles.chartCard}>
                         <div className={styles.chartHeader}>
                             <h4>Live ECG</h4>

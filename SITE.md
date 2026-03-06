@@ -42,12 +42,14 @@ Track all generated pages here. Mark with `[x]` when complete.
 - [x] `profile` — User Profile & Settings ✅
 - [x] `about` — About the Project (public) ✅
 - [x] `404` — Custom 404 Page ✅
+- [x] `loading` — Loading / Splash Screen ✅
+- [x] `interactive` — Background Animation & Interactive Showcase ✅
 
 ---
 
 ## 5. Roadmap (Build Order)
 
-All pages completed! ✅
+All 15 pages completed! ✅
 
 ---
 

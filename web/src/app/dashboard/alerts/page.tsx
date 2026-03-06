@@ -123,7 +123,7 @@ export default function AlertsPage() {
                 </div>
 
                 {/* Charts */}
-                <div className="grid-2">
+                <div className="ng-grid-2">
                     <div className={styles.chartCard}>
                         <h4>Alerts by Severity</h4>
                         <div className={styles.donutWrap}><Doughnut data={donutData} options={donutOpts} /></div>

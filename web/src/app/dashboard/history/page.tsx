@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from './page.module.css';
 
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 // Lazy-load the heavy ECG modal (canvas + analysis)

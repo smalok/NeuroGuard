@@ -11,10 +11,11 @@ import {
     LineElement, BarElement, Filler, Tooltip, Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import styles from './page.module.css';
+
 
 import { useDevice } from '@/context/DeviceContext';
 import { Play, Square } from 'lucide-react';
+import styles from './page.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Filler, Tooltip, Legend);
 
@@ -112,7 +113,7 @@ export default function EMGPage() {
                 </div>
 
                 {/* Vital Stats */}
-                <div className="grid-4">
+                <div className="ng-grid-4">
                     <StatCard title="EMG RMS" value={vitals.emgRms.toString()} unit="µV" icon={Zap} color="var(--accent-purple)" status={{ label: 'Normal', type: 'green' }} />
                     <StatCard title="Mean Absolute Value" value={vitals.emgMav.toString()} unit="µV" icon={Activity} color="var(--accent-blue)" status={{ label: 'Normal', type: 'green' }} />
                     <StatCard title="Variance" value={vitals.emgVariance.toString()} unit="" icon={BarChart3} color="var(--accent-yellow)" status={{ label: 'Normal', type: 'green' }} />
@@ -120,7 +121,7 @@ export default function EMGPage() {
                 </div>
 
                 {/* Analysis Charts */}
-                <div className="grid-2">
+                <div className="ng-grid-2">
                     <div className={styles.chartCard} style={{ height: 300 }}>
                         <h4>Muscle Activation Heatmap (Simulated)</h4>
                         <div style={{ height: '100%', background: 'linear-gradient(90deg, #111827 0%, #a855f7 50%, #111827 100%)', opacity: 0.5, borderRadius: 8 }} />

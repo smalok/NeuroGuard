@@ -57,7 +57,7 @@ export default function ProfilePage() {
                     <button className="btn btn-primary" style={{ marginTop: 'var(--space-4)' }}>Update Baseline</button>
                 </div>
 
-                <div className="grid-2">
+                <div className="ng-grid-2">
                     {/* Appearance */}
                     <div className={styles.card}>
                         <h4>Appearance</h4>

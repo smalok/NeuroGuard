@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Brain, Shield, Heart, Zap, Cpu, ArrowRight, Github, Twitter, Mail, Activity, BarChart3 } from 'lucide-react';
-import styles from './page.module.css';
+
 
 export default function AboutPage() {
     const team = [

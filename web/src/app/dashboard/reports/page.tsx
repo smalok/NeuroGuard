@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header';
 import { BurnoutPrediction, Report } from '@/types';
 import { Brain } from 'lucide-react';
 import styles from './page.module.css';
-
 export default function ReportsPage() {
     const [prediction, setPrediction] = useState<BurnoutPrediction | null>(null);
     const [reports, setReports] = useState<Report[] | null>(null);
